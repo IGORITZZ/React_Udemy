@@ -12,7 +12,7 @@ const LisntsRenders = () => {
 
   return (
     <div>
-        <ul>
+      <ul>
             {list.map((item, i) => (
                 <li key={i}>{item}</li>
             ) )}
