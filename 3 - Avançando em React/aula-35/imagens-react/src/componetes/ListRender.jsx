@@ -7,14 +7,14 @@ const ListRender = () => {
     { id: 1, name: "José", age: 27 },
     { id: 2, name: "Mauro", age: 23 },
     { id: 3, name: "Trevis", age: 17 },
-    { id: 4, name: "Mouses", age: 18 },
   ]);
 
-  const deleteRandom = () =>{
-      const randonNumber = Math.floor(Math.random() * 5)
+  const deleteRandom = () => {
+      const randonNumber = Math.floor(Math.random() * 4)
 
-      setUsers((prevUser) => {
-        return prevUser.fiter((user) => randonNumber !== user.id)
+      setUsers((prevUsers) => {
+        console.log(prevUsers)
+        return prevUsers.filter((users) => randonNumber !== users.id)
       })
   }
 
@@ -26,13 +26,13 @@ const ListRender = () => {
         ))}
       </ul>
       <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.name} - {user.age}
+        {users.map((users) => (
+          <li key={users.id}>
+            {users.name} - {users.age}
           </li>
         ))}
       </ul>
-      <button onClick={deleteRandom()}>Deletar usuário da lista</button>
+      <button onClick={deleteRandom}>Deletar usuário</button>
     </div>
   );
 };
