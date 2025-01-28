@@ -1,6 +1,7 @@
 import './App.css'
 
 import city from "./assets/city.jpg"
+import ConditionalRender from './componetes/ConditionalRender'
 import ListRender from './componetes/ListRender'
 import ManageData from './componetes/ManageData'
 
@@ -19,6 +20,7 @@ function App() {
       </div>
       <ManageData/>
       <ListRender/>
+      <ConditionalRender/>
     </>
   )
 }
