@@ -6,6 +6,7 @@ import ConditionalRender from './componetes/ConditionalRender'
 import ListRender from './componetes/ListRender'
 import ManageData from './componetes/ManageData'
 import ShowUserName from './componetes/ShowUserName'
+import CarDetails from './componetes/CarDetails'
 
 function App() {
   const name = "Joana"
@@ -25,6 +26,7 @@ function App() {
       <ListRender/>
       <ConditionalRender/>
       <ShowUserName name={userName}/>
+      <CarDetails marca="Ford" km={100.000} cor="Branco"/>
     </>
   )
 }
