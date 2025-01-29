@@ -9,7 +9,7 @@ import ShowUserName from './componetes/ShowUserName'
 import CarDetails from './componetes/CarDetails'
 
 function App() {
-  const name = "Joana"
+  // const name = "Joana"
   const [userName] = useState("Joilson")
   return (
     <>
@@ -20,15 +20,20 @@ function App() {
       </div>
       {/* imagem em src */}
       <div>
-      <img src={city} alt="cidade" />
+        <img src={city} alt="cidade" />
       </div>
-      <ManageData/>
-      <ListRender/>
-      <ConditionalRender/>
-      <ShowUserName name={userName}/>
-      <CarDetails marca="Ford" km={100.000} cor="Branco"/>
+      <ManageData />
+      <ListRender />
+      <ConditionalRender />
+      {/* props */}
+      <ShowUserName name={userName} />
+      {/* destructing */}
+      <CarDetails marca="Ford" km={100.000} cor="Branco" carroNovo={false} />
+      {/* reaproveitando */}
+      <CarDetails marca="Fiat" km={0} cor="Azul" carroNovo={true} />
+      <CarDetails marca="Chevrolet" km={27.588} cor="Preto" carroNovo={false} />
     </>
-  )
+  );
 }
 
 export default App
