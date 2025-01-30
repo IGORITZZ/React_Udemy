@@ -11,6 +11,12 @@ import CarDetails from './componetes/CarDetails'
 function App() {
   // const name = "Joana"
   const [userName] = useState("Joilson")
+  const carros = [
+    { id: 1, marca: "FERRARI", cor: "VERMELHA", km: 0, carroNovo: true },
+    { id: 1, marca: "LARMBO", cor: "PRETA", km: 15631, carroNovo: false },
+    { id: 1, marca: "ALFA", cor: "AZUL", km: 2656, carroNovo: false },
+    { id: 1, marca: "ASTON", cor: "AMARELA", km: 0, carroNovo: true }
+  ];
   return (
     <>
       <h1>Avaçando em React</h1>
@@ -32,6 +38,15 @@ function App() {
       {/* reaproveitando */}
       <CarDetails marca="Fiat" km={0} cor="Azul" carroNovo={true} />
       <CarDetails marca="Chevrolet" km={27.588} cor="Preto" carroNovo={false} />
+      {/* loop em arra de objetos */}
+    {carros.map((carro) => (
+      <CarDetails 
+      marca={carro.marca}
+      cor={carro.cor}
+      km={carro.km}
+      carroNovo={carro.carroNovo}
+      />
+    ))}
     </>
   );
 }
