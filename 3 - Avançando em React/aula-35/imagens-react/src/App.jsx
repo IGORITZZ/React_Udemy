@@ -7,6 +7,8 @@ import ListRender from './componetes/ListRender'
 import ManageData from './componetes/ManageData'
 import ShowUserName from './componetes/ShowUserName'
 import CarDetails from './componetes/CarDetails'
+import Fragments from './componetes/Fragments'
+import Container from './componetes/Container'
 
 function App() {
   // const name = "Joana"
@@ -34,19 +36,28 @@ function App() {
       {/* props */}
       <ShowUserName name={userName} />
       {/* destructing */}
-      <CarDetails marca="Ford" km={100.000} cor="Branco" carroNovo={false} />
+      <CarDetails marca="Ford" km={100.0} cor="Branco" carroNovo={false} />
       {/* reaproveitando */}
       <CarDetails marca="Fiat" km={0} cor="Azul" carroNovo={true} />
       <CarDetails marca="Chevrolet" km={27.588} cor="Preto" carroNovo={false} />
       {/* loop em arra de objetos */}
-    {carros.map((carro) => (
-      <CarDetails 
-      marca={carro.marca}
-      cor={carro.cor}
-      km={carro.km}
-      carroNovo={carro.carroNovo}
-      />
-    ))}
+      {carros.map((carro) => (
+        <CarDetails
+          marca={carro.marca}
+          cor={carro.cor}
+          km={carro.km}
+          carroNovo={carro.carroNovo}
+        />
+      ))}
+      {/* Fragaments */}
+      <Fragments propsFragments="Teste titulo" />
+      {/* children */}
+      <Container myvalue="conteudo teste">
+        <p>Esse é o conteudo</p>
+      </Container>
+      <Container myvalue="conteudo teste3">
+        <p>Esse é o outros conteudo</p>
+      </Container>
     </>
   );
 }
