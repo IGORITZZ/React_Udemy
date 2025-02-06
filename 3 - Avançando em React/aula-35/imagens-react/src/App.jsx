@@ -9,6 +9,7 @@ import ShowUserName from './componetes/ShowUserName'
 import CarDetails from './componetes/CarDetails'
 import Fragments from './componetes/Fragments'
 import Container from './componetes/Container'
+import ExecuteFuinction from './componetes/ExecuteFuinction'
 
 function App() {
   // const name = "Joana"
@@ -19,6 +20,9 @@ function App() {
     { id: 1, marca: "ALFA", cor: "AZUL", km: 2656, carroNovo: false },
     { id: 1, marca: "ASTON", cor: "AMARELA", km: 0, carroNovo: true }
   ];
+
+   const mostrarMensagem = () => {console.log('Mensagem  mostrada')}
+
   return (
     <>
       <h1>Avaçando em React</h1>
@@ -43,6 +47,7 @@ function App() {
       {/* loop em arra de objetos */}
       {carros.map((carro) => (
         <CarDetails
+          key={carro.id}
           marca={carro.marca}
           cor={carro.cor}
           km={carro.km}
@@ -58,6 +63,8 @@ function App() {
       <Container myvalue="conteudo teste3">
         <p>Esse é o outros conteudo</p>
       </Container>
+      {/* Executando função com PROP */}
+      <ExecuteFuinction minhaFuncao={mostrarMensagem}/>
     </>
   );
 }
