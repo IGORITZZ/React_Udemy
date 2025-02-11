@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import ListaArray from './componentes/listaArray';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const listaNomes = [    
+    {id: 0, nome: 'IGOR', idade: 27},
+    {id: 1, nome: 'LAURA', idade: 23},
+    {id: 2, nome: 'MIGUEL', idade: 18},
+    {id: 3, nome: 'LARISSA', idade: 17}
+  ]
+  
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Desafio 4</h1>
+      {listaNomes.map((lista) => (
+        <ListaArray 
+        key={lista.id}
+        nome={lista.nome}
+        idade={lista.idade}
+        />
+      ))}
     </>
-  )
+  );
 }
 
 export default App
