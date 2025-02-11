@@ -10,6 +10,8 @@ import CarDetails from './componetes/CarDetails'
 import Fragments from './componetes/Fragments'
 import Container from './componetes/Container'
 import ExecuteFuinction from './componetes/ExecuteFuinction'
+import Mensagem from './componetes/Mensagem'
+import ChangeMessageState from './componetes/ChangeMessageState'
 
 function App() {
   // const name = "Joana"
@@ -23,6 +25,11 @@ function App() {
 
    const mostrarMensagem = () => {console.log('Mensagem  mostrada')}
 
+   const [mensagem, setMensagem] = useState("")
+
+   const enviarMensagem = (msg) =>{
+    setMensagem(msg)
+   }
   return (
     <>
       <h1>Avaçando em React</h1>
@@ -65,6 +72,10 @@ function App() {
       </Container>
       {/* Executando função com PROP */}
       <ExecuteFuinction minhaFuncao={mostrarMensagem}/>
+      {/* State Lift */}
+      <Mensagem msg={mensagem} />
+      <ChangeMessageState enviarMensagem={enviarMensagem}/> 
+      
     </>
   );
 }
