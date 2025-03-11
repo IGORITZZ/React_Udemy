@@ -1,7 +1,11 @@
 import "./App.css";
 import MeuComponete from "./componentes/MeuComponete";
 
+import { useState } from "react";
+
 function App() {
+  const n = 15;
+  const [name] = useState("IGOR");
   return (
     <>
       {/*  CSS Global */}
@@ -19,6 +23,21 @@ function App() {
       >
         Esse paragrafo é com CSS Inline
       </p>
+
+      {/* CSS INLINE DINAMICO */}
+      <h2 style={n < 10 ? { color: "green" } : { color: "blue" }}>
+        CSS Dinâmico
+      </h2>
+      <h2 style={n > 10 ? { color: "green" } : { color: "blue" }}>
+        CSS Dinâmico
+      </h2>
+      <h2
+        style={
+          name === "IGOR" ? { color: "red", backgroundColor: "black" } : null
+        }
+      >
+        Testo Dinâmico
+      </h2>
     </>
   );
 }
