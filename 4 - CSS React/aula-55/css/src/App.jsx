@@ -6,6 +6,7 @@ import { useState } from "react";
 function App() {
   const n = 15;
   const [name] = useState("IGOR");
+  const redTitle = true;
   return (
     <>
       {/*  CSS Global */}
@@ -37,6 +38,11 @@ function App() {
         }
       >
         Testo Dinâmico
+      </h2>
+
+      {/* CSS CLASSE DINAMICA */}
+      <h2 className={redTitle ? "red-title" : "title"}>
+        Esse titulo possui classe dinaminca
       </h2>
     </>
   );
