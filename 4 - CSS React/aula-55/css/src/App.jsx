@@ -2,6 +2,7 @@ import "./App.css";
 import MeuComponete from "./componentes/MeuComponete";
 
 import { useState } from "react";
+import Title from "./componentes/Title";
 
 function App() {
   const n = 15;
@@ -44,6 +45,8 @@ function App() {
       <h2 className={redTitle ? "red-title" : "title"}>
         Esse titulo possui classe dinaminca
       </h2>
+      {/* CSS MODULES */}
+      <Title />
     </>
   );
 }
