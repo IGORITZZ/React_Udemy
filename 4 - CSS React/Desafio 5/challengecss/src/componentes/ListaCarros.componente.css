@@ -1,0 +1,13 @@
+.lista_carros{
+    background-color: aqua;
+    margin: auto;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border-radius: 5px;
+}
+.lista_carros p{
+    margin: 5px;
+}
