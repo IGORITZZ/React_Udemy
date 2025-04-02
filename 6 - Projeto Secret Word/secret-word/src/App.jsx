@@ -4,10 +4,9 @@ import './App.css'
 import { useCallback, useEffect, useState } from 'react'
 // Data
 import {wordsList} from './data/words'
-console.log(wordsList);
+//console.log(wordsList)
 // Componentes
 import StarScreen from './components/StarScreen'
-
 //Estágios do jogo
 const stages = [
   {id: 0, name: 'start'},
@@ -16,7 +15,8 @@ const stages = [
 ]
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
-
+  const [words] = useState(wordsList);
+  console.log(words);
   return (
     <>
       <div className='App'>
