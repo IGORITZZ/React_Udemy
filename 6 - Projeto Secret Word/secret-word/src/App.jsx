@@ -7,25 +7,38 @@ import {wordsList} from './data/words'
 //console.log(wordsList)
 // Componentes
 import StarScreen from './components/StarScreen'
+import Game from './components/Game'
+import GameOver from './components/GameOver'
 //Estágios do jogo
 const stages = [
-  {id: 0, name: 'start'},
-  {id: 1, name: 'game'},
-  {id: 2, name: 'gameover'}
+  {id: 1, name: 'start'},
+  {id: 2, name: 'game'},
+  {id: 3, name: 'gameover'}
 ]
 function App() {
-  const [gameStage, setGameStage] = useState(stages[0].name)
   const [words] = useState(wordsList);
-  console.log(words);
+  const [gameStage, setGameStage] = useState(stages[0].name)
+  // Start the game
+  const startGame = () => {
+    setGameStage(stages[1].name)
+  }
+  // process the letter input
+  const verifyLetter = () => {
+    setGameStage(stages[2].name);
+  }
+  //returns the game
+    const retry = () => {
+      setGameStage(stages[0].name);
+    };
   return (
     <>
-      <div className='App'>
-        {gameStage === 'start' &&  <StarScreen/>}
-        {gameStage === 'game' && <Game/>}
-        {gameStage === 'gameover' && <GameOver/>}
+      <div className="App">
+        {gameStage === "start" && <StarScreen startGame={startGame} />}
+        {gameStage === "game" && <Game verifyLetter={verifyLetter} />}
+        {gameStage === "gameover" && <GameOver retry={retry}/>}
       </div>
     </>
-  )
+  );
 }
 
 export default App
