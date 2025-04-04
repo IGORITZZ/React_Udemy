@@ -16,11 +16,41 @@ const stages = [
   {id: 3, name: 'gameover'}
 ]
 function App() {
+  const [gameStage, setGameStage] = useState(stages[0].name);
   const [words] = useState(wordsList);
-  const [gameStage, setGameStage] = useState(stages[0].name)
+  const [escolhaPalavra, setEscolhaPalavra] = useState("")
+  const [escolhaCategoria, setEscolhaCategoria] = useState("")
+  const [letras, setLetras] = useState([]);
+
+  const escolhaPalavraCategoria = () => {
+    // escolhendo uma categoria random
+    const categorias = Object.keys(words)
+    const categoria = categorias[Math.floor(Math.random() * Object.keys(words).length)]
+    console.log(categoria) // mostrando categoria no navegador
+
+    // escolhendo uma palavra random (dentro da categoria random)
+    const palavra = words[categoria][Math.floor(Math.random() * words[categoria].length)]
+    console.log(palavra)
+
+    return {palavra, categoria}
+  }
+
   // Start the game
   const startGame = () => {
-    setGameStage(stages[1].name)
+    const {palavra, categoria} = escolhaPalavraCategoria()
+
+    let palavraLetras = palavra.split("")
+    palavraLetras = palavraLetras.map((l) => l.toUpperCase())
+
+    console.log(palavra, categoria)
+    console.log(palavraLetras)
+
+
+    setEscolhaPalavra(palavra)
+    setEscolhaCategoria(categoria)
+    setLetras(letras)
+
+    setGameStage(stages[1].name);
   }
   // process the letter input
   const verifyLetter = () => {
