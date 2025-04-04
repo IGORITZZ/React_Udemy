@@ -1,38 +1,71 @@
-const categories = [
-  { frutas: ["banana", "maçã", "uva", "laranja", "abacaxi", "morango", "pera", "manga", "melancia", "kiwi"] },
-  { animais: ["cachorro", "gato", "elefante", "leão", "tigre", "girafa", "lobo", "zebra", "urso", "rinoceronte"] },
-  { cores: ["vermelho", "azul", "verde", "amarelo", "roxo", "laranja", "preto", "branco", "cinza", "rosa"] },
-  { países: ["Brasil", "Canadá", "Japão", "França", "Alemanha", "Itália", "Espanha", "Portugal", "China", "Índia"] },
-  { carros: ["Ferrari", "Lamborghini", "Porsche", "Bugatti", "Mercedes", "BMW", "Audi", "Toyota", "Honda", "Ford"] },
-  { esportes: ["futebol", "basquete", "vôlei", "tênis", "natação", "corrida", "ciclismo", "boxe", "golfe", "handebol"] },
-  { profissões: ["médico", "engenheiro", "advogado", "professor", "arquiteto", "dentista", "programador", "bombeiro", "policial", "jornalista"] },
-  { instrumentosMusicais: ["violão", "piano", "bateria", "violino", "flauta", "guitarra", "baixo", "trompete", "saxofone", "teclado"] },
-  { comidas: ["pizza", "hambúrguer", "sushi", "lasanha", "churrasco", "pastel", "tacos", "risoto", "nhoque", "feijoada"] },
-  { bebidas: ["água", "refrigerante", "suco", "cerveja", "vinho", "whisky", "café", "chá", "milkshake", "caipirinha"] },
-  { elementosQuímicos: ["hidrogênio", "oxigênio", "carbono", "ferro", "ouro", "prata", "cobre", "nitrogênio", "enxofre", "mercúrio"] },
-  { planetas: ["Mercúrio", "Vênus", "Terra", "Marte", "Júpiter", "Saturno", "Urano", "Netuno", "Plutão", "Eris"] },
-  { jogos: ["xadrez", "baralho", "dama", "pôquer", "dominó", "bingo", "videogame", "pingue-pongue", "jogos de tabuleiro", "roleta"] },
-  { sentimentos: ["amor", "alegria", "tristeza", "raiva", "medo", "ansiedade", "felicidade", "esperança", "frustração", "orgulho"] },
-  { tiposDeDoces: ["chocolate", "bala", "pirulito", "sorvete", "pudim", "brigadeiro", "cupcake", "biscoito", "gelatina", "torta doce"] },
-  { ferramentas: ["martelo", "serrote", "chave de fenda", "furadeira", "alicate", "pregos", "parafuso", "trena", "serra", "formão"] },
-  { meiosDeTransporte: ["carro", "moto", "avião", "trem", "navio", "bicicleta", "ônibus", "metrô", "caminhão", "barco"] },
-  { tiposDeFlores: ["rosa", "tulipa", "orquídea", "girassol", "margarida", "lótus", "lírio", "dália", "cravo", "hibisco"] },
-  { estilosMusicais: ["rock", "pop", "jazz", "blues", "reggae", "samba", "funk", "eletrônica", "sertanejo", "clássica"] },
-  { marcasFamosas: ["Apple", "Samsung", "Nike", "Adidas", "Coca-Cola", "McDonald's", "Google", "Amazon", "Tesla", "Microsoft"] },
-  { objetosEscritorio: ["caneta", "lápis", "borracha", "caderno", "régua", "clipes", "grampeador", "folhas", "tesoura", "marcador"] },
-  { videogames: ["PlayStation", "Xbox", "Nintendo", "Atari", "Sega", "Game Boy", "Wii", "Switch", "PC", "Steam Deck"] },
-  { instrumentosCirúrgicos: ["bisturi", "pinça", "tesoura cirúrgica", "agulha", "seringa", "luva estéril", "campo cirúrgico", "fio de sutura", "hemostato", "serra óssea"] },
-  { tiposDePeixes: ["salmão", "tilápia", "atum", "bacalhau", "dourado", "truta", "piranha", "sardinha", "cavala", "robalo"] },
-  { tiposDeQueijos: ["mussarela", "cheddar", "parmesão", "brie", "gorgonzola", "provolone", "roquefort", "camembert", "ricota", "feta"] },
-  { tiposDePães: ["francês", "italiano", "integral", "ciabatta", "baguete", "pita", "sourdough", "focaccia", "pão de forma", "pão australiano"] },
-  { personagensDeFilmes: ["Batman", "Superman", "Homem-Aranha", "Harry Potter", "Darth Vader", "Coringa", "Indiana Jones", "Rocky Balboa", "James Bond", "Sherlock Holmes"] },
-  { timesDeFutebol: ["Real Madrid", "Barcelona", "Manchester United", "Liverpool", "Bayern de Munique", "Juventus", "PSG", "Milan", "Chelsea", "Flamengo"] },
-  { raçasDeCães: ["Labrador", "Golden Retriever", "Bulldog", "Poodle", "Pastor Alemão", "Husky Siberiano", "Chihuahua", "Dálmata", "Beagle", "Shih Tzu"] },
-  { raçasDeGatos: ["Siamês", "Persa", "Maine Coon", "Sphynx", "Bengal", "Ragdoll", "Scottish Fold", "British Shorthair", "Abissínio", "Norwegian Forest"] },
-  { planetasFicticios: ["Tatooine", "Krypton", "Namekusei", "Cybertron", "Arrakis", "Pandora", "Vulcano", "Gallifrey", "Endor", "Coruscant"] },
-  { filmesFamosos: ["Titanic", "O Poderoso Chefão", "Matrix", "Vingadores", "Senhor dos Anéis", "Star Wars", "Jurassic Park", "Inception", "Coringa", "Gladiador"] },
-  { cidadesDoMundo: ["Nova York", "Paris", "Tóquio", "Londres", "Rio de Janeiro", "Sydney", "Dubai", "Moscou", "Berlim", "Roma"] },
-  { armasMedievais: ["espada", "machado", "arco e flecha", "lança", "catapulta", "besta", "florete", "adaga", "escudo", "maça"] }
-];
-
-console.log(categories);
+export const listagemDePalavras = {
+  carro: [
+    "Motor", "Porta", "Capo", "Pneu", "Antena", "Farol", "Parabrisa", "Volante", "Freio", "Cambio", 
+    "Roda", "Buzina", "Banco", "Retrovisor", "Escapamento"
+  ],
+  marca: [
+    "Fiat", "Renault", "Citroen", "Hyundai", "Chevrolet", "Volkswagen", "Toyota", 
+    "Honda", "Nissan", "BMW", "Mercedes", "Kia", "Peugeot", "Jeep", "Subaru"
+  ],
+  fruta: [
+    "Banana", "Maca", "Pera", "Mamao", "Laranja", "Abacate", "Abacaxi", "Acai", "Acerola", "Amora",
+    "Araticum", "Bacaba", "Biriba", "Cacau", "Graviola", "Cupuacu", "Uva", "Jabuticaba", "Cereja", "Melancia",
+    "Melao", "Caqui", "Caja", "Cajamanga", "Caju", "Carambola", "Castanha", "Chirimoya", "Ciriguela", "Cabeludinha",
+    "Damasco", "Duku", "Embauba", "Figo", "Framboesa", "Goiaba", "Guarana", "Heisteria", "Inga", "Jaca",
+    "Jambo", "Jamelao", "Jenipapo", "Kiwi", "Kinkan", "Lima", "Limao", "Litchi", "Longan", "Lucuma",
+    "Macanilha", "Mangaba", "Manga", "Maracuja", "Marmelo", "Mirtilo", "Morango", "Murici", "Nespera", "Noni",
+    "Nectarina", "Olho-de-boi", "Pinha", "Pequi", "Physalis", "Pitaia", "Pitomba", "Pitanga", "Pupunha", "Rambutan",
+    "Sapoti", "Sapucaia", "Seriguela", "Tamarindo", "Tangerina", "Toranja", "Umbu", "Uxi", "Veludo", "Zimbro",
+    "Bacuri", "Atemoia", "Feijoa", "Jatoba", "Cambuci", "Cambuca", "Marola", "Araca", "Bacupari", "Ambare",
+    "Grumixama", "Munjurana", "Cabacinha", "Ingazeira", "Jenipapeiro", "Moriche", "Butia", "Curriola", "Cabeludao", "Baru",
+    "Peito-de-moca", "Mangostao", "Fruta-pao", "Groselha", "Pomarrosa", "Mexerica", "Fruta-do-conde", "Pessego", "Cupuaçu", "Jambo-vermelho"
+  ],
+  corpo: [
+    "Braco", "Perna", "Cerebro", "Pescoco", "Olhos", "Maos", "Pes", "Joelho", "Cotovelo", "Coracao", 
+    "Estomago", "Pulmao", "Costas", "Boca", "Nariz"
+  ],
+  computador: [
+    "Mouse", "Teclado", "Monitor", "Gabinete", "Placa-mae", "Processador", "Memoria", "HD", "SSD", "Webcam", 
+    "Microfone", "Fonte", "Cooler", "Placa de video", "Cabos"
+  ],
+  programacao: [
+    "Linguagem", "Framework", "JavaScript", "React", "Python", "Java", "C++", "HTML", "CSS", "Node", 
+    "API", "Banco de dados", "Git", "Algoritmo", "Logica"
+  ],
+  alimento: [
+    "Arroz", "Feijao", "Carne", "Leite", "Ovo", "Pao", "Manteiga", "Frango", "Peixe", "Queijo", 
+    "Batata", "Macarrao", "Tomate", "Cenoura", "Alface"
+  ],
+  pais: [
+    "Brasil", "Argentina", "Canada", "Japao", "Franca", "Italia", "Alemanha", "Espanha", "Mexico", "China", 
+    "India", "Russia", "Portugal", "Australia", "Egito"
+  ],
+  cor: [
+    "Vermelho", "Azul", "Verde", "Amarelo", "Roxo", "Laranja", "Branco", "Preto", "Cinza", "Rosa", 
+    "Marrom", "Bege", "Turquesa", "Lilas", "Dourado"
+  ],
+  esporte: [
+    "Futebol", "Basquete", "Volei", "Natacao", "Tenis", "Atletismo", "Ciclismo", "Boxe", "Skate", "Surfe", 
+    "Ginastica", "Golfe", "Hipismo", "Remo", "Beisebol"
+  ],
+  profissao: [
+    "Medico", "Engenheiro", "Professor", "Advogado", "Carpinteiro", "Eletricista", "Cozinheiro", 
+    "Enfermeiro", "Bombeiro", "Policial", "Arquiteto", "Jornalista", "Veterinario", "Mecanico", "Cientista"
+  ],
+  animal: [
+    "Cachorro", "Gato", "Elefante", "Tigre", "Girafa", "Golfinho", "Pinguim", "Leao", "Urso", "Coelho", 
+    "Cavalo", "Jacare", "Zebra", "Macaco", "Tartaruga"
+  ],
+  objeto: [
+    "Mesa", "Cadeira", "Lampada", "Relogio", "Espelho", "Telefone", "Caneta", "Livro", "Chave", "Mochila", 
+    "Computador", "Quadro", "Garrafa", "Faca", "Tesoura"
+  ],
+  instrumento: [
+    "Violao", "Piano", "Bateria", "Violino", "Flauta", "Saxofone", "Guitarra", "Tambor", "Acordeon", "Harpa", 
+    "Trompete", "Clarinet", "Cello", "Ukulele", "Maracas"
+  ],
+  elementoQuimico: [
+    "Hidrogenio", "Oxigenio", "Carbono", "Nitrogenio", "Ferro", "Ouro", "Prata", "Sodio", "Cloro", "Calcio", 
+    "Cobre", "Zinco", "Iodo", "Enxofre", "Silicio"
+  ]
+};
