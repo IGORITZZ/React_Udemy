@@ -3,7 +3,7 @@ import './App.css'
 // React
 import { useCallback, useEffect, useState } from 'react'
 // Data
-import {wordsList} from './data/words'
+import {listagemDePalavras} from './data/palavras'
 //console.log(wordsList)
 // Componentes
 import StarScreen from './components/StarScreen'
@@ -17,19 +17,19 @@ const stages = [
 ]
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);
-  const [words] = useState(wordsList);
+  const [palavras] = useState(listagemDePalavras);
   const [escolhaPalavra, setEscolhaPalavra] = useState("")
   const [escolhaCategoria, setEscolhaCategoria] = useState("")
   const [letras, setLetras] = useState([]);
 
   const escolhaPalavraCategoria = () => {
     // escolhendo uma categoria random
-    const categorias = Object.keys(words)
-    const categoria = categorias[Math.floor(Math.random() * Object.keys(words).length)]
+    const categorias = Object.keys(palavras)
+    const categoria = categorias[Math.floor(Math.random() * Object.keys(palavras).length)]
     console.log(categoria) // mostrando categoria no navegador
 
     // escolhendo uma palavra random (dentro da categoria random)
-    const palavra = words[categoria][Math.floor(Math.random() * words[categoria].length)]
+    const palavra = palavras[categoria][Math.floor(Math.random() * palavras[categoria].length)]
     console.log(palavra)
 
     return {palavra, categoria}
