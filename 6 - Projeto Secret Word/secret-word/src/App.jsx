@@ -22,33 +22,42 @@ function App() {
   const [escolhaCategoria, setEscolhaCategoria] = useState("")
   const [letras, setLetras] = useState([]);
 
+  const [letraAdvinhada, setletraAdvinhada] = useState([])
+  const [letrasErradas, setLetrasErradas] = useState([])
+  const [chances, setChances] = useState(3)
+  const [pontuação, setPontuação] = useState(0)
+
+
   const escolhaPalavraCategoria = () => {
     // escolhendo uma categoria random
-    const categorias = Object.keys(palavras)
-    const categoria = categorias[Math.floor(Math.random() * Object.keys(palavras).length)]
-    console.log(categoria) // mostrando categoria no navegador
+    const gerandoCategoriaAleatória = Object.keys(palavras)
+    const categoriaAleatória = gerandoCategoriaAleatória[Math.floor(Math.random() * Object.keys(palavras).length)]
+    console.log(categoriaAleatória) // mostrando categoria no navegador
 
     // escolhendo uma palavra random (dentro da categoria random)
-    const palavra = palavras[categoria][Math.floor(Math.random() * palavras[categoria].length)]
-    console.log(palavra)
+    const palavraAleatoria =
+      palavras[categoriaAleatória][
+        Math.floor(Math.random() * palavras[categoriaAleatória].length)
+      ];
+    console.log(palavraAleatoria)
 
-    return {palavra, categoria}
+    return {palavraAleatoria, categoriaAleatória}
   }
 
   // Start the game
   const startGame = () => {
-    const {palavra, categoria} = escolhaPalavraCategoria()
+    const {palavraAleatoria, categoriaAleatória} = escolhaPalavraCategoria()
 
-    let palavraLetras = palavra.split("")
+    let palavraLetras = palavraAleatoria.split("")
     palavraLetras = palavraLetras.map((l) => l.toUpperCase())
 
-    console.log(palavra, categoria)
+    console.log(palavraAleatoria, categoriaAleatória)
     console.log(palavraLetras)
 
 
-    setEscolhaPalavra(palavra)
-    setEscolhaCategoria(categoria)
-    setLetras(letras)
+    setEscolhaPalavra(palavraAleatoria)
+    setEscolhaCategoria(categoriaAleatória);
+    setLetras(palavraLetras)
 
     setGameStage(stages[1].name);
   }
@@ -64,7 +73,15 @@ function App() {
     <>
       <div className="App">
         {gameStage === "start" && <StarScreen startGame={startGame} />}
-        {gameStage === "game" && <Game verifyLetter={verifyLetter} />}
+        {gameStage === "game" && <Game verifyLetter={verifyLetter} 
+        escolhaPalavra={escolhaPalavra} 
+        escolhaCategoria={escolhaCategoria} 
+        letras={letras}
+        letrasErradas={letrasErradas}
+        letraAdvinhada={letraAdvinhada}
+        chances={chances}
+        pontuação={pontuação}
+        />}
         {gameStage === "gameover" && <GameOver retry={retry}/>}
       </div>
     </>
