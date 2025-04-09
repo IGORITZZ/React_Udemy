@@ -1,4 +1,5 @@
-import './Game.css'
+import { useState, useRef } from "react";
+import "./Game.css";
 
 const Game = ({
   verifyLetter,
@@ -8,8 +9,18 @@ const Game = ({
   letrasErradas,
   letraAdvinhada,
   chances,
-  pontuação
+  pontuação,
 }) => {
+  const [letra, setLetra] = useState("");
+  const letraInputRef = useRef(null);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    verifyLetter(letra);
+    setLetra("");
+    letraInputRef.current.focus();
+  };
+
   return (
     <div className="game">
       <p className="pontos">
@@ -23,7 +34,9 @@ const Game = ({
       <div className="palavraContainer">
         {letras.map((l, i) =>
           letraAdvinhada.includes(l) ? (
-            <span key={i} className="letra">{l}</span>
+            <span key={i} className="letra">
+              {l}
+            </span>
           ) : (
             <span key={i} className="quadroBranco"></span>
           )
@@ -31,8 +44,16 @@ const Game = ({
       </div>
       <div className="letraContainer">
         <p>Tente adivinhar uma letra da palavra:</p>
-        <form>
-          <input type="text" name="letter" maxLength="1" required />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="letter"
+            maxLength="1"
+            required
+            onChange={(e) => setLetra(e.target.value)}
+            value={letra}
+            ref={letraInputRef}
+          />
           <button>Jogar</button>
         </form>
       </div>
@@ -46,4 +67,4 @@ const Game = ({
   );
 };
 
-export default Game
+export default Game;
