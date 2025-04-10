@@ -75,8 +75,8 @@ function App() {
 
     // coloque a letra adivinha ou remova uma chance
     if (letras.includes(nomalizarLetra)) {
-      setletraAdvinhada((prevLetraAdvinhada) => [
-        ...prevLetraAdvinhada,
+      setletraAdvinhada((actualLetraAdvinhada) => [
+        ...actualLetraAdvinhada,
         nomalizarLetra,
       ]);
     } else {
