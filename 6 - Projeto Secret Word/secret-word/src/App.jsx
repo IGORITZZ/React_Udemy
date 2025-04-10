@@ -1,7 +1,7 @@
 // CSS
 import "./App.css";
 // React
-import { useCallback, useEffect, useState } from "react";
+import { act, useCallback, useEffect, useState } from "react";
 // Data
 import { listagemDePalavras } from "./data/palavras";
 //console.log(wordsList)
@@ -64,8 +64,31 @@ function App() {
   };
   // process the letter input
   const verifyLetter = (letra) => {
-    console.log(letra);
+    const nomalizarLetra = letra.toUpperCase();
+    // checar se uma letra já foi utilizada
+    if (
+      letraAdvinhada.includes(nomalizarLetra) ||
+      letrasErradas.includes(nomalizarLetra)
+    ) {
+      return;
+    }
+
+    // coloque a letra adivinha ou remova uma chance
+    if (letras.includes(nomalizarLetra)) {
+      setletraAdvinhada((prevLetraAdvinhada) => [
+        ...prevLetraAdvinhada,
+        nomalizarLetra,
+      ]);
+    } else {
+      setLetrasErradas((actualLetrasErradas) => [
+        ...actualLetrasErradas,
+        nomalizarLetra,
+      ]);
+    }
   };
+  console.log("Letras Corretas: " + letraAdvinhada);
+  console.log("Letras Erradas: " + letrasErradas);
+
   //returns the game
   const retry = () => {
     setGameStage(stages[0].name);
