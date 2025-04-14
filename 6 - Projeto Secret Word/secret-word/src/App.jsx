@@ -70,6 +70,7 @@ function App() {
       letraAdvinhada.includes(nomalizarLetra) ||
       letrasErradas.includes(nomalizarLetra)
     ) {
+      alert("A letra já foi utilizada. Tente novamente")
       return;
     }
 
