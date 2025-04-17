@@ -2,21 +2,21 @@ import { useState, useRef } from "react";
 import "./Game.css";
 
 const Game = ({
-  verifyLetter,
-  escolhaPalavra,
-  escolhaCategoria,
-  letras,
-  letrasErradas,
-  letraAdvinhada,
-  chances,
-  pontuação,
+  verificarLetra,
+  palavraEscolhida,
+  categoriaEscolhida,
+  letrasDaPalavra,
+  letrasIncorretas,
+  letrasAdvinhadas,
+  chancesRestantes,
+  pontuacao,
 }) => {
   const [letra, setLetra] = useState("");
   const letraInputRef = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    verifyLetter(letra);
+    verificarLetra(letra);
     setLetra("");
     letraInputRef.current.focus();
   };
@@ -24,16 +24,16 @@ const Game = ({
   return (
     <div className="game">
       <p className="pontos">
-        <span>Pontuação: {pontuação}</span>
+        <span>Pontuação: {pontuacao}</span>
       </p>
       <h1>Advinhe a Palavra:</h1>
       <h3 className="dica">
-        Dica sobre a palavra: <span>{escolhaCategoria}</span>
+        Dica sobre a palavra: <span>{categoriaEscolhida}</span>
       </h3>
-      <p>Você ainda tem {chances} tentativas(s).</p>
+      <p>Você ainda tem {chancesRestantes} tentativas(s).</p>
       <div className="palavraContainer">
-        {letras.map((l, i) =>
-          letraAdvinhada.includes(l) ? (
+        {letrasDaPalavra.map((l, i) =>
+          letrasAdvinhadas.includes(l) ? (
             <span key={i} className="letra">
               {l}
             </span>
@@ -59,7 +59,7 @@ const Game = ({
       </div>
       <div className="wrongLettersContainer">
         <p>Letras já utilizadas:</p>
-        {letrasErradas.map((l, i) => (
+        {letrasIncorretas.map((l, i) => (
           <span key={i}>{l}, </span>
         ))}
       </div>
