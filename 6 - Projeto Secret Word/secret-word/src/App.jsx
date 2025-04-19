@@ -27,7 +27,7 @@ function App() {
   const [letrasAdvinhadas, setletrasAdvinhadas] = useState([]);
   const [letrasIncorretas, setLetrasIncorretas] = useState([]);
   const [chancesRestantes, setChancesRestantes] = useState(totalDeChances);
-  const [pontuacao, setPontuacao] = useState(100);
+  const [pontuacao, setPontuacao] = useState(0);
 
   const escolhaPalavraECategoria = () => {
     // escolhendo uma categoria random
@@ -98,7 +98,7 @@ function App() {
     setletrasAdvinhadas([])
     setLetrasIncorretas([])
   }
-
+// verificar se as tentativas terminarem
   useEffect(() => {
     if(chancesRestantes <= 0){
       // reset em todos os states
@@ -107,6 +107,21 @@ function App() {
       setEtapaDoJogo(stages[2].name)
     }
   }, [chancesRestantes])
+  // verificar condições de vitória
+  useEffect(() => {
+
+    const letrasUnicas = [...new Set(letrasDaPalavra)]
+
+    //condição para vitória
+    if(letrasAdvinhadas.length === letrasUnicas.length ){
+      // adicionar pontuação
+      setPontuacao((pontuacaoAtual) => pontuacaoAtual += 100)
+
+      // reiniciar o jogo com uma nova palavra
+ 
+    }
+  }, [letrasAdvinhadas])
+
   //returns the game
   const reiniciarJogo = () => {
     setPontuacao()
