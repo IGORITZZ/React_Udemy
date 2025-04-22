@@ -3,7 +3,7 @@ import "./Game.css";
 
 const Game = ({
   verificarLetra,
-  palavraEscolhida,
+  //palavraEscolhida,
   categoriaEscolhida,
   letrasDaPalavra,
   letrasIncorretas,
@@ -20,16 +20,24 @@ const Game = ({
     // [a-zA-Z] simboliza que será aceito apenas caracteres de a-z minusculas
     // o mesmo vale para A-Z porém, vale para maiculas
     // como usamos toUpperCase, tanto faz, mas deixamos claro qual caractere que vamos aceitar ou não
-      if(!letra.match(/^[a-zA-Z]$/)) {
-        alert("Digite Apenas uma letra.")
-        setLetra("")
-        return
-      }
-
-
+    if (!letra.match(/^[a-zA-Z]$/)) {
+      alert("Digite Apenas uma letra.");
+      setLetra("");
+      return;
+    }
     verificarLetra(letra);
     setLetra("");
     letraInputRef.current.focus();
+  };
+
+  const corDasTentativas = () => {
+    if (chancesRestantes === 3) {
+      return "green"; // 3 tentativas restantes
+    } else if (chancesRestantes === 2) {
+      return "orange"; // 2 tentativas restantes
+    } else if (chancesRestantes === 1) {
+      return "red"; // 1 tentativa restante
+    }
   };
 
   return (
@@ -39,9 +47,19 @@ const Game = ({
       </p>
       <h1>Advinhe a Palavra:</h1>
       <h3 className="dica">
-        Dica sobre a palavra: <span>{categoriaEscolhida}</span>
+        Dica sobre a palavra: <span>{categoriaEscolhida.toUpperCase()}</span>
       </h3>
-      <p>Você ainda tem {chancesRestantes} tentativas(s).</p>
+      <p
+        className="paragrafoTentativa"
+        style={{
+          backgroundColor: corDasTentativas(),
+          padding: "10px",
+          borderRadius: "7px",
+          display: "inline-block",
+        }}
+      >
+        Você ainda tem {chancesRestantes} tentativas(s).
+      </p>
       <div className="palavraContainer">
         {letrasDaPalavra.map((l, i) =>
           letrasAdivinhadas.includes(l) ? (
@@ -71,7 +89,10 @@ const Game = ({
       <div className="wrongLettersContainer">
         <p>Letras já utilizadas:</p>
         {letrasIncorretas.map((l, i) => (
-          <span key={i}>{l}{i < letrasIncorretas.length - 1 && ', ' }</span>
+          <span key={i}>
+            {l}
+            {i < letrasIncorretas.length - 1 && ", "}
+          </span>
           // para evitar {l}, que ficaria vizualemte assim (a, c, d,), mesmo sendo a ultima letra, sempre teria uma "," no final
           // validamos para que se for a ultima letra, não tena virgula (a, c, d)
           // se o indice atual for menor ele adciona a virgula, se for igual ele não adciona nada

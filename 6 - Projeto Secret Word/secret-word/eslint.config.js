@@ -3,6 +3,17 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
+module.exports = {
+  // ...outras configs
+  plugins: ['react-hooks'],
+  rules: {
+      // Essas duas são as principais pra hooks
+      'react-hooks/rules-of-hooks': 'error', // obriga seguir as regras dos hooks
+      'react-hooks/exhaustive-deps': 'warn', // avisa se faltar dependência
+  },
+};
+
+
 export default [
   { ignores: ['dist'] },
   {

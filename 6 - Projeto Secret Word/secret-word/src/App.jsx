@@ -1,7 +1,8 @@
+
 // CSS
 import "./App.css";
 // React
-import { act, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 // Data
 import { listagemDePalavras } from "./data/palavras";
 // Componentes
@@ -29,40 +30,35 @@ function App() {
   const [chancesRestantes, setChancesRestantes] = useState(totalDeChances);
   const [pontuacao, setPontuacao] = useState(0);
 
-  const escolhaPalavraECategoria = () => {
+  const escolhaPalavraECategoria = useCallback(() => {
     // escolhendo uma categoria random
     const categoriasDisponiveis = Object.keys(palavrasPorCategoria);
     const categoriaAleatoria =
       categoriasDisponiveis[
         Math.floor(Math.random() * Object.keys(palavrasPorCategoria).length)
       ];
-    console.log(categoriaAleatoria); // mostrando categoria no navegador
-
+    //console.log(categoriaAleatoria); 
+    // mostrando categoria no navegador
     // escolhendo uma palavra random (dentro da categoria random)
     const palavraAleatoria =
       palavrasPorCategoria[categoriaAleatoria][
         Math.floor(Math.random() * palavrasPorCategoria[categoriaAleatoria].length)
       ];
-
     return { palavraAleatoria, categoriaAleatoria };
-  };
+  }, [palavrasPorCategoria]);
 
   // Start the game
-  const IniciarJogo = () => {
+  const IniciarJogo = useCallback(() => {
+    limparLetras()
     const { palavraAleatoria, categoriaAleatoria } = escolhaPalavraECategoria();
-
     let letrasSeparadas = palavraAleatoria.split("").map((l) => l.toUpperCase())
-    //palavraLetras = palavraLetras.map((l) => l.toUpperCase()); códgio acima melhora essa linha
-
-    console.log(palavraAleatoria, categoriaAleatoria);
-    console.log(letrasSeparadas);
-
+      //console.log(palavraAleatoria, categoriaAleatoria);
+      //console.log(letrasSeparadas);
     setPalavraEscolhida(palavraAleatoria);
     setCategoriaEscolhida(categoriaAleatoria);
     setLetrasDaPalavra(letrasSeparadas);
-
     setEtapaDoJogo(estagioDoJogo[1].name);
-  };
+  }, [escolhaPalavraECategoria]);
   // process the letter input
   const verificarLetra = (letra) => {
     const letraNormalizada = letra.toUpperCase();
@@ -71,30 +67,25 @@ function App() {
       letrasAdivinhadas.includes(letraNormalizada) ||
       letrasIncorretas.includes(letraNormalizada)
     ) {
-      alert("A letra " + letraNormalizada + " ja foi utilizada. Tente novamente")
+      alert(`A letrar ${letraNormalizada} já foi utilizada. Tente novamente.`)
       return;
     }
-
     // coloque a letra adivinha ou remova uma chance
     if (letrasDaPalavra.includes(letraNormalizada)) {
       setLetrasAdivinhadas((letrasAtuais) => [
         ...letrasAtuais,
         letraNormalizada,
       ]);
-
     } else {
       setLetrasIncorretas((letrasErradasAtuais) => [
         ...letrasErradasAtuais,
         letraNormalizada,
       ]);
-
       setChancesRestantes((chancesAtuais) => chancesAtuais - 1)
-
     }
-
   };
-  console.log("Letras Corretas: " + letrasAdivinhadas);
-  console.log("Letras Erradas: " + letrasIncorretas); 
+  //console.log("Letras Corretas: " + letrasAdivinhadas);
+  //console.log("Letras Erradas: " + letrasIncorretas); 
   const limparLetras = () => {
     setLetrasAdivinhadas([])
     setLetrasIncorretas([])
@@ -104,26 +95,23 @@ function App() {
     if(chancesRestantes <= 0){
       // reset em todos os states
       limparLetras()
-
       setEtapaDoJogo(estagioDoJogo[2].name)
     }
   }, [chancesRestantes])
   // verificar condições de vitória
   useEffect(() => {
-
-    const letrasUnicas = [...new Set(letrasDaPalavra)]
-
-    //condição para vitória
-    if(letrasAdivinhadas.length === letrasUnicas.length ){
-      // adicionar pontuação
-      setPontuacao((pontuacaoAtual) => pontuacaoAtual += 100)
-      limparLetras()
+    // Verificar se todas as letras da palavra foram adivinhadas corretamente
+    const letrasUnicas = [... new Set(letrasDaPalavra)];
+    // Condição para vitória: todas as letras únicas precisam estar em letrasAdvinhadas
+    if(letrasAdivinhadas.length === letrasUnicas.length && etapaDoJogo === estagioDoJogo[1].name){
+      setPontuacao((pontuacaoAtual) =>pontuacaoAtual += 100)
+      //iniciar o jogo novamente
       IniciarJogo()
-      // reiniciar o jogo com uma nova palavra
- 
+      //inicia o numero de chances
+      setChancesRestantes(3)
     }
-  }, [letrasAdivinhadas])
 
+  }, [letrasAdivinhadas, letrasDaPalavra, IniciarJogo, etapaDoJogo])
   //returns the game
   const reiniciarJogo = () => {
     setPontuacao(0)

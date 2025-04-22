@@ -1,4 +1,8 @@
-h2 span{
+h2{
     font-size: 1.5em;
-    color: #ecfa00;
+}
+
+p span{
+    font-size: 3em;
+    font-weight: bold;
 }

@@ -2,6 +2,10 @@
     font-size: 2.5em;
 }
 
+h1{
+    margin: 0;
+}
+
 .pontos span{
     font-weight: bold;
 }

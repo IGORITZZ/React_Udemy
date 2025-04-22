@@ -1,6 +1,14 @@
 import './StartScreen.css'
 
 const StartScreen = ({startGame}) => {
+
+
+  useEffect(() => {
+    console.log(usuario.nome);
+  }, []);
+
+
+
   return (
     <div className='start'>
         <h1>Palavra Secreta</h1>
