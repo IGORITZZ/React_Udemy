@@ -5,11 +5,11 @@ import { act, useCallback, useEffect, useState } from "react";
 // Data
 import { listagemDePalavras } from "./data/palavras";
 // Componentes
-import StarScreen from "./components/StarScreen";
+import StartScreen from "./components/StartScreen";
 import Game from "./components/Game";
 import GameOver from "./components/GameOver";
 //Estágios do jogo
-const stages = [
+const estagioDoJogo = [
   { id: 0, name: "start" },
   { id: 1, name: "game" },
   { id: 2, name: "gameover" },
@@ -18,30 +18,30 @@ const stages = [
 const totalDeChances = 3
 
 function App() {
-  const [estapaDoJogo, setEtapaDoJogo] = useState(stages[0].name);
-  const [palavarasPorCategoria] = useState(listagemDePalavras);
+  const [etapaDoJogo, setEtapaDoJogo] = useState(estagioDoJogo[0].name);
+  const [palavrasPorCategoria] = useState(listagemDePalavras);
   const [palavraEscolhida, setPalavraEscolhida] = useState("");
   const [categoriaEscolhida, setCategoriaEscolhida] = useState("");
   const [letrasDaPalavra, setLetrasDaPalavra] = useState([]);
 
-  const [letrasAdvinhadas, setletrasAdvinhadas] = useState([]);
+  const [letrasAdivinhadas, setLetrasAdivinhadas] = useState([]);
   const [letrasIncorretas, setLetrasIncorretas] = useState([]);
   const [chancesRestantes, setChancesRestantes] = useState(totalDeChances);
   const [pontuacao, setPontuacao] = useState(0);
 
   const escolhaPalavraECategoria = () => {
     // escolhendo uma categoria random
-    const categoriasDisponiveis = Object.keys(palavarasPorCategoria);
+    const categoriasDisponiveis = Object.keys(palavrasPorCategoria);
     const categoriaAleatoria =
       categoriasDisponiveis[
-        Math.floor(Math.random() * Object.keys(palavarasPorCategoria).length)
+        Math.floor(Math.random() * Object.keys(palavrasPorCategoria).length)
       ];
     console.log(categoriaAleatoria); // mostrando categoria no navegador
 
     // escolhendo uma palavra random (dentro da categoria random)
     const palavraAleatoria =
-      palavarasPorCategoria[categoriaAleatoria][
-        Math.floor(Math.random() * palavarasPorCategoria[categoriaAleatoria].length)
+      palavrasPorCategoria[categoriaAleatoria][
+        Math.floor(Math.random() * palavrasPorCategoria[categoriaAleatoria].length)
       ];
 
     return { palavraAleatoria, categoriaAleatoria };
@@ -61,14 +61,14 @@ function App() {
     setCategoriaEscolhida(categoriaAleatoria);
     setLetrasDaPalavra(letrasSeparadas);
 
-    setEtapaDoJogo(stages[1].name);
+    setEtapaDoJogo(estagioDoJogo[1].name);
   };
   // process the letter input
   const verificarLetra = (letra) => {
     const letraNormalizada = letra.toUpperCase();
     // checar se uma letra já foi utilizada
     if (
-      letrasAdvinhadas.includes(letraNormalizada) ||
+      letrasAdivinhadas.includes(letraNormalizada) ||
       letrasIncorretas.includes(letraNormalizada)
     ) {
       alert("A letra " + letraNormalizada + " ja foi utilizada. Tente novamente")
@@ -77,7 +77,7 @@ function App() {
 
     // coloque a letra adivinha ou remova uma chance
     if (letrasDaPalavra.includes(letraNormalizada)) {
-      setletrasAdvinhadas((letrasAtuais) => [
+      setLetrasAdivinhadas((letrasAtuais) => [
         ...letrasAtuais,
         letraNormalizada,
       ]);
@@ -93,10 +93,10 @@ function App() {
     }
 
   };
-  console.log("Letras Corretas: " + letrasAdvinhadas);
+  console.log("Letras Corretas: " + letrasAdivinhadas);
   console.log("Letras Erradas: " + letrasIncorretas); 
   const limparLetras = () => {
-    setletrasAdvinhadas([])
+    setLetrasAdivinhadas([])
     setLetrasIncorretas([])
   }
 // verificar se as tentativas terminarem
@@ -105,7 +105,7 @@ function App() {
       // reset em todos os states
       limparLetras()
 
-      setEtapaDoJogo(stages[2].name)
+      setEtapaDoJogo(estagioDoJogo[2].name)
     }
   }, [chancesRestantes])
   // verificar condições de vitória
@@ -114,38 +114,39 @@ function App() {
     const letrasUnicas = [...new Set(letrasDaPalavra)]
 
     //condição para vitória
-    if(letrasAdvinhadas.length === letrasUnicas.length ){
+    if(letrasAdivinhadas.length === letrasUnicas.length ){
       // adicionar pontuação
       setPontuacao((pontuacaoAtual) => pontuacaoAtual += 100)
-
+      limparLetras()
+      IniciarJogo()
       // reiniciar o jogo com uma nova palavra
  
     }
-  }, [letrasAdvinhadas])
+  }, [letrasAdivinhadas])
 
   //returns the game
   const reiniciarJogo = () => {
-    setPontuacao()
+    setPontuacao(0)
     setChancesRestantes(totalDeChances);
-    setEtapaDoJogo(stages[0].name);
+    setEtapaDoJogo(estagioDoJogo[0].name);
   };
   return (
     <>
       <div className="App">
-        {estapaDoJogo === "start" && <StarScreen startGame={IniciarJogo} />}
-        {estapaDoJogo === "game" && (
+        {etapaDoJogo === "start" && <StartScreen startGame={IniciarJogo} />}
+        {etapaDoJogo === "game" && (
           <Game
             verificarLetra={verificarLetra}
             palavraEscolhida={palavraEscolhida}
             categoriaEscolhida={categoriaEscolhida}
             letrasDaPalavra={letrasDaPalavra}
             letrasIncorretas={letrasIncorretas}
-            letrasAdvinhadas={letrasAdvinhadas}
+            letrasAdivinhadas={letrasAdivinhadas}
             chancesRestantes={chancesRestantes}
             pontuacao={pontuacao}
           />
         )}
-        {estapaDoJogo === "gameover" && (
+        {etapaDoJogo === "gameover" && (
           <GameOver reiniciarJogo={reiniciarJogo} pontuacao={pontuacao} />
         )}
       </div>
