@@ -43,23 +43,22 @@ function App() {
       palavarasPorCategoria[categoriaAleatoria][
         Math.floor(Math.random() * palavarasPorCategoria[categoriaAleatoria].length)
       ];
-    console.log(palavraAleatoria);
 
     return { palavraAleatoria, categoriaAleatoria };
   };
 
   // Start the game
   const IniciarJogo = () => {
-    const { palavraAleatoria, categoriaAleatória } = escolhaPalavraECategoria();
+    const { palavraAleatoria, categoriaAleatoria } = escolhaPalavraECategoria();
 
     let letrasSeparadas = palavraAleatoria.split("").map((l) => l.toUpperCase())
     //palavraLetras = palavraLetras.map((l) => l.toUpperCase()); códgio acima melhora essa linha
 
-    console.log(palavraAleatoria, categoriaAleatória);
+    console.log(palavraAleatoria, categoriaAleatoria);
     console.log(letrasSeparadas);
 
     setPalavraEscolhida(palavraAleatoria);
-    setCategoriaEscolhida(categoriaAleatória);
+    setCategoriaEscolhida(categoriaAleatoria);
     setLetrasDaPalavra(letrasSeparadas);
 
     setEtapaDoJogo(stages[1].name);
@@ -82,6 +81,7 @@ function App() {
         ...letrasAtuais,
         letraNormalizada,
       ]);
+
     } else {
       setLetrasIncorretas((letrasErradasAtuais) => [
         ...letrasErradasAtuais,
@@ -89,11 +89,12 @@ function App() {
       ]);
 
       setChancesRestantes((chancesAtuais) => chancesAtuais - 1)
+
     }
+
   };
   console.log("Letras Corretas: " + letrasAdvinhadas);
-  console.log("Letras Erradas: " + letrasIncorretas);
-
+  console.log("Letras Erradas: " + letrasIncorretas); 
   const limparLetras = () => {
     setletrasAdvinhadas([])
     setLetrasIncorretas([])
