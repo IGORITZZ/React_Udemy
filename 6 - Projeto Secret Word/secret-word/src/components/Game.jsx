@@ -7,7 +7,7 @@ const Game = ({
   categoriaEscolhida,
   letrasDaPalavra,
   letrasIncorretas,
-  letrasAdvinhadas,
+  letrasAdivinhadas,
   chancesRestantes,
   pontuacao,
 }) => {
@@ -15,6 +15,17 @@ const Game = ({
   const letraInputRef = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
+    // validação para apenas letras serem aceitas
+    // /^ e $/ simbolizam o começo e o fim da string, ou seja, 1 caracter apenas
+    // [a-zA-Z] simboliza que será aceito apenas caracteres de a-z minusculas
+    // o mesmo vale para A-Z porém, vale para maiculas
+    // como usamos toUpperCase, tanto faz, mas deixamos claro qual caractere que vamos aceitar ou não
+      if(!letra.match(/^[a-zA-Z]$/)) {
+        alert("Digite Apenas uma letra.")
+        setLetra("")
+        return
+      }
+
 
     verificarLetra(letra);
     setLetra("");
@@ -33,7 +44,7 @@ const Game = ({
       <p>Você ainda tem {chancesRestantes} tentativas(s).</p>
       <div className="palavraContainer">
         {letrasDaPalavra.map((l, i) =>
-          letrasAdvinhadas.includes(l) ? (
+          letrasAdivinhadas.includes(l) ? (
             <span key={i} className="letra">
               {l}
             </span>
@@ -60,7 +71,11 @@ const Game = ({
       <div className="wrongLettersContainer">
         <p>Letras já utilizadas:</p>
         {letrasIncorretas.map((l, i) => (
-          <span key={i}>{l}, </span>
+          <span key={i}>{l}{i < letrasIncorretas.length - 1 && ', ' }</span>
+          // para evitar {l}, que ficaria vizualemte assim (a, c, d,), mesmo sendo a ultima letra, sempre teria uma "," no final
+          // validamos para que se for a ultima letra, não tena virgula (a, c, d)
+          // se o indice atual for menor ele adciona a virgula, se for igual ele não adciona nada
+          // mantendo o a ultima letra sem uma virgula
         ))}
       </div>
     </div>
