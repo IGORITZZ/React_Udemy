@@ -32,11 +32,11 @@ const Game = ({
 
   const corDasTentativas = () => {
     if (chancesRestantes === 3) {
-      return "green"; // 3 tentativas restantes
+      return "green";
     } else if (chancesRestantes === 2) {
-      return "orange"; // 2 tentativas restantes
+      return "orange"; 
     } else if (chancesRestantes === 1) {
-      return "red"; // 1 tentativa restante
+      return "red";
     }
   };
 
@@ -56,6 +56,7 @@ const Game = ({
           padding: "10px",
           borderRadius: "7px",
           display: "inline-block",
+          fontWeight: 'bold'
         }}
       >
         Você ainda tem {chancesRestantes} tentativas(s).
