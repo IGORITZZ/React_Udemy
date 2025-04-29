@@ -1,0 +1,19 @@
+{
+    "produtos": [
+        {
+            "id": 1,
+            "name": "Camisa",
+            "preco": 59.90
+        },
+        {
+            "id": 2,
+            "name": "Calça Jeans",
+            "preco": 199.90
+        },
+                {
+            "id": 3,
+            "name": "Boné Nike Jordan",
+            "preco": 259.90
+        }
+    ]
+}
