@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   // 2 - Adicionar Produtos
-  const hadleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const produto= {
@@ -50,7 +50,7 @@ function App() {
         </ul>
       </div>
       <div className="add-produtos">
-        <form onSubmit={hadleSubmit}>
+        <form onSubmit={handleSubmit}>
           <label>
             Nome do Produto:
             <input

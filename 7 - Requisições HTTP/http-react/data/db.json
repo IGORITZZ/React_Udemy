@@ -3,27 +3,17 @@
     {
       "id": "1",
       "nomeDoProduto": "Camisa",
-      "preco": 59.9
+      "preco": 59.90
     },
     {
       "id": "2",
       "nomeDoProduto": "Calça Jeans",
-      "preco": 199.9
+      "preco": 199.90
     },
     {
       "id": "3",
       "nomeDoProduto": "Boné Nike Jordan",
-      "preco": 259.9
-    },
-    {
-      "id": "77e1",
-      "nomeDoProduto": "Calça Moletom",
-      "preco": "129.50"
-    },
-    {
-      "id": "75e0",
-      "nomeDoProduto": "Bone Nike Zyon",
-      "preco": "459.99"
+      "preco": 259.90
     }
   ]
 }
