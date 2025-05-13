@@ -28,13 +28,22 @@ function App() {
       preco
     }
     console.log(produto)
-    const resposta = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(produto),
-    })
+    const resposta = await fetch(url, { // -> fazemos a consulta em (URL) após a virgura {argumentos/configurações}
+      method: "POST", // -> informa que estamos "enviando" (POST) algo
+      headers: {
+        "Content-Type": "application/json", // -> informa que enviamos alguma coisa em formato JSON
+      },
+      body: JSON.stringify(produto), // -> tranformamos o objeto enviado em uma STRING com formato JSON
+    });
+
+    //3 - carregamento dinamico
+    const produtoAdicionado = await resposta.json()
+
+    setProdutos((prevProdutos) => [...prevProdutos, produtoAdicionado])
+
+    setNomeDoProduto("")
+    setPreco("")
+
   };
 
   return (
