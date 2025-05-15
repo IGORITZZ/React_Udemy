@@ -44,6 +44,11 @@
       "id": "5b23",
       "nomeDoProduto": "Calça Air Jordan",
       "preco": "558.9"
+    },
+    {
+      "id": "bb97",
+      "nomeDoProduto": "Tenis Nike Duke",
+      "preco": "1289.00"
     }
   ]
 }
