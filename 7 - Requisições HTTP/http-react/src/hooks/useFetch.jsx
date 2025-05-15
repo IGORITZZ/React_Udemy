@@ -6,12 +6,12 @@ import { useState, useEffect } from "react";
 
     useEffect(() => {
 
-        const fetchDatos = async () => {
+        const buscarDados = async () => {
             const resposta = await fetch(url)
-            const json = await resposta.json()
-            setDados(json) 
+            const dados = await resposta.json()
+            setDados(dados) 
         }
-        fetchDatos()
+        buscarDados()
 
     }, [url])
 
