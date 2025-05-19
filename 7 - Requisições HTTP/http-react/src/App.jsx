@@ -12,7 +12,7 @@ function App() {
   const [nomeDoProduto, setNomeDoProduto] = useState("");
   const [preco, setPreco] = useState("");
   // 1 e 4 - customizando hook e resgatando dados
-  const { dados: itens } = useFetch(url);
+  const { dados: itens, configuracaoHttp } = useFetch(url);
 
   // 2 - Adicionar Produtos
   const handleSubmit = async (e) => {
@@ -22,20 +22,9 @@ function App() {
       nomeDoProduto,
       preco,
     };
-    console.log(produto);
-    const resposta = await fetch(url, {
-      // -> fazemos a consulta em (URL) após a virgura {argumentos/configurações}
-      method: "POST", // -> informa que estamos "enviando" (POST) algo
-      headers: {
-        "Content-Type": "application/json", // -> informa que enviamos alguma coisa em formato JSON
-      },
-      body: JSON.stringify(produto), // -> tranformamos o objeto enviado em uma STRING com formato JSON
-    });
-
-    //3 - carregamento dinamico
-    const produtoAdicionado = await resposta.json();
-
-    setProdutos((prevProdutos) => [...prevProdutos, produtoAdicionado]);
+    
+    // 5 - refatorando POST
+    configuracaoHttp(produto, "POST")
 
     setNomeDoProduto("");
     setPreco("");
@@ -51,7 +40,7 @@ function App() {
               <li key={produto.id}>
                 {produto.nomeDoProduto} R$: {produto.preco}
               </li>
-            ))}
+            ))} 
         </ul>
       </div>
       <div className="add-produtos">
