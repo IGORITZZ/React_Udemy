@@ -49,6 +49,16 @@
       "id": "bb97",
       "nomeDoProduto": "Tenis Nike Duke",
       "preco": "1289.00"
+    },
+    {
+      "id": "e126",
+      "nomeDoProduto": "teste",
+      "preco": "1"
+    },
+    {
+      "id": "4591",
+      "nomeDoProduto": "TESTE",
+      "preco": "3"
     }
   ]
 }
