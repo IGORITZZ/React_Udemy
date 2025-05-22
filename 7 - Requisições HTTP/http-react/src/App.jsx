@@ -12,20 +12,17 @@ function App() {
   const [nomeDoProduto, setNomeDoProduto] = useState("");
   const [preco, setPreco] = useState("");
   // 1 e 4 - customizando hook e resgatando dados
-  const { dados: itens, configuracaoHttp } = useFetch(url);
+  const { dados: itens, configuracaoHttp, carregando } = useFetch(url);
 
   // 2 - Adicionar Produtos
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const produto = {
       nomeDoProduto,
       preco,
     };
-    
-    // 5 - refatorando POST
-    configuracaoHttp(produto, "POST")
 
+    configuracaoHttp(produto, "POST");
     setNomeDoProduto("");
     setPreco("");
   };
@@ -34,13 +31,15 @@ function App() {
     <>
       <div className="App">
         <h1>Lista de Produtos</h1>
+        {/* 6 - loading */}
+        {carregando && <p>Carregando lista...</p>}
         <ul>
           {itens &&
             itens.map((produto) => (
               <li key={produto.id}>
                 {produto.nomeDoProduto} R$: {produto.preco}
               </li>
-            ))} 
+            ))}
         </ul>
       </div>
       <div className="add-produtos">
