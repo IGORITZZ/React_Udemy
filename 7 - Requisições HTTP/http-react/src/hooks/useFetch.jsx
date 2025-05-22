@@ -6,47 +6,48 @@ export const useFetch = (url) => {
   // 5 - refatorando o POST
   const [configuracao, setConfiguracao] = useState(null);
   const [metodo, setMetodo] = useState(null);
-  const [recarregamento, setRecarregamento] = useState(false);
+  const [chamarBusca, setChamarBusca] = useState(null);
 
-  const configuracaoHttp = (data, method) => {
+  // 6 - Loading
+  const [carregando, setCarregando] = useState(false)
 
-    if(method === "POST"){
-        setConfiguracao({
-            method,
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        setMetodo(method)
+  const configuracaoHttp = (produto, method) => {
+    if (method === "POST") {
+      setConfiguracao({
+        method,
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(produto),
+      });
+      setMetodo(method);
     }
-
-  }
-
-  useEffect(() => {
-    const buscarDados = async () => {
-      const resposta = await fetch(url);
-      const dados = await resposta.json();\gi
-      setDados(dados);
-    };
-    buscarDados();
-  }, [url, recarregamento]);
+  };
 
   // 5 - refatorando o POST
   useEffect(() => {
     const requisicaoHttp = async () => {
       if (metodo === "POST") {
-        let buscarOpcoes = [url, configuracao];
-
-        const resposta = await fetch(...buscarOpcoes);
-
+        // let buscarOpcoes = [url, configuracao];
+        const resposta = await fetch(url, configuracao);
         const json = await resposta.json();
-
-        setRecarregamento(json);
+        setChamarBusca(json);
       }
     };
     requisicaoHttp();
   }, [configuracao, metodo, url]);
 
-  return { dados, configuracaoHttp };
+  useEffect(() => {
+    const buscarDados = async () => {
+      // 6 - Loading
+      setCarregando(true)
+      const resposta = await fetch(url);
+      const dados = await resposta.json();
+      setDados(dados);
+      setCarregando(false)
+    };
+    buscarDados();
+  }, [url, chamarBusca]);
+
+  return { dados, configuracaoHttp, carregando };
 };
