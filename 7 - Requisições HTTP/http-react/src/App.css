@@ -5,7 +5,9 @@ h1 {
 .add-produtos{
   border-top: 1px solid black;
 }
-
+ul{
+  list-style-type: none;
+}
 form{
   display: flex;
   flex-direction: column;
@@ -17,5 +19,9 @@ form input{
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+}
+
+.estado_carregamento{
+  text-align: center;
 }
 
