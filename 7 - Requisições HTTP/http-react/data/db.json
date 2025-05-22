@@ -16,49 +16,14 @@
       "preco": 259.9
     },
     {
-      "id": "d3b0",
-      "nomeDoProduto": "Tenis Nike Jordan",
-      "preco": "569.95"
-    },
-    {
-      "id": "250a",
-      "nomeDoProduto": "Calça Moletom",
-      "preco": "333.95"
-    },
-    {
-      "id": "0489",
-      "nomeDoProduto": "Blusa Nike Zyon",
-      "preco": "359"
-    },
-    {
-      "id": "5f44",
-      "nomeDoProduto": "Boné Air Jordar",
-      "preco": "159.30"
-    },
-    {
-      "id": "52fa",
-      "nomeDoProduto": "Boina Air",
-      "preco": "36.98"
-    },
-    {
-      "id": "5b23",
-      "nomeDoProduto": "Calça Air Jordan",
-      "preco": "558.9"
-    },
-    {
-      "id": "bb97",
-      "nomeDoProduto": "Tenis Nike Duke",
-      "preco": "1289.00"
-    },
-    {
-      "id": "e126",
-      "nomeDoProduto": "teste",
-      "preco": "1"
-    },
-    {
-      "id": "4591",
-      "nomeDoProduto": "TESTE",
+      "id": "1da3",
+      "nomeDoProduto": "Camise Nike Zyon",
       "preco": "3"
+    },
+    {
+      "id": "6fbb",
+      "nomeDoProduto": "Calsa Jogger Nike Style",
+      "preco": "269.99"
     }
   ]
 }
