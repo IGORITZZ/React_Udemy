@@ -24,6 +24,16 @@
       "id": "6fbb",
       "nomeDoProduto": "Calsa Jogger Nike Style",
       "preco": "269.99"
+    },
+    {
+      "id": "8b85",
+      "nomeDoProduto": "Nike Zyon Style Max",
+      "preco": "798.95"
+    },
+    {
+      "id": "172b",
+      "nomeDoProduto": "Blusa Moleton Nike SB",
+      "preco": "359.89"
     }
   ]
 }
