@@ -32,12 +32,14 @@ function App() {
       <div className="App">
         <h1>Lista de Produtos</h1>
         {/* 6 - loading */}
-        {carregando && <p className="estado_carregamento">Carregando lista...</p>}
+        {carregando && (
+          <p className="estado_carregamento">Carregando lista...</p>
+        )}
         <ul>
           {itens &&
             itens.map((produto) => (
               <li key={produto.id}>
-                {produto.nomeDoProduto} R$: {produto.preco} 
+                {produto.nomeDoProduto} R$: {produto.preco}
               </li>
             ))}
         </ul>
@@ -62,7 +64,9 @@ function App() {
               onChange={(e) => setPreco(e.target.value)}
             />
           </label>
-          <input type="submit" value="Adicionar Produto" />
+          {/* 7 - LOADING POST */}
+          {carregando && <input type="submit" value="Aguarde" />}
+          {!carregando && <input type="submit" value="Adicionar Produto" />}
         </form>
       </div>
     </>
