@@ -12,7 +12,7 @@ function App() {
   const [nomeDoProduto, setNomeDoProduto] = useState("");
   const [preco, setPreco] = useState("");
   // 1 e 4 - customizando hook e resgatando dados
-  const { dados: itens, configuracaoHttp, carregando } = useFetch(url);
+  const { dados: itens, configuracaoHttp, carregando, erro } = useFetch(url);
 
   // 2 - Adicionar Produtos
   const handleSubmit = async (e) => {
@@ -35,6 +35,7 @@ function App() {
         {carregando && (
           <p className="estado_carregamento">Carregando lista...</p>
         )}
+        {erro && <p>{erro}</p>}
         <ul>
           {itens &&
             itens.map((produto) => (
