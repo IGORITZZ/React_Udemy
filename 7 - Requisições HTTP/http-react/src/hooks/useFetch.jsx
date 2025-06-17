@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { useState, useEffect } from "react";
 
 // 1 e 4 - customizando hook e resgatando dados
@@ -10,6 +11,9 @@ export const useFetch = (url) => {
 
   // 6 - Loading
   const [carregando, setCarregando] = useState(false)
+
+  // 7 - Tratando erros
+  const [erro, setErro] = useState(null)
 
   const configuracaoHttp = (produto, method) => {
     if (method === "POST") {
@@ -41,13 +45,19 @@ export const useFetch = (url) => {
     const buscarDados = async () => {
       // 6 - Loading
       setCarregando(true)
-      const resposta = await fetch(url);
-      const dados = await resposta.json();
-      setDados(dados);
+      try{
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+        setDados(dados);
+
+      } catch (erro) {
+        console.log(erro.message)
+        setErro("Houve um problema para carregar os dados")
+      }
       setCarregando(false)
-    };
+    }
     buscarDados();
   }, [url, chamarBusca]);
 
-  return { dados, configuracaoHttp, carregando };
+  return { dados, configuracaoHttp, carregando, erro };
 };
