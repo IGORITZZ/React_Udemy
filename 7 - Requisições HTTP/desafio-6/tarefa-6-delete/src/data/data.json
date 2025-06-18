@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "produto":"Nike SB",
+        "preco": 459.89,
+        "tamanho": "X"
+    },
+    {
+        "id": 2,
+        "produto":"Nike SB T-shirt",
+        "preco": 179.89,
+        "tamanho": "XGG"
+    }
+]

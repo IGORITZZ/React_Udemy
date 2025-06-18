@@ -1,13 +1,12 @@
 .quadrado{
     background-color: black;
-    width: 250px;
+    width: 80%;
     border-radius: 5px;
-    margin: auto;
+    margin: 10px auto;
 }
 .quadrado > p{
     text-align: center;
     font-family: "Poppins";
     color: white;
     font-size: 2em;
-
 }
