@@ -1,0 +1,16 @@
+{
+    "produtos":[
+        {
+            "id": 1,
+            "nome": "NIKE SB SHOES",
+            "preco": 458.79,
+            "tamanho": 35
+        },
+        {
+            "id": 2,
+            "nome": "NIKE SB T-shirt",
+            "preco": 458.79,
+            "tamanho": "GG"
+        }
+    ]
+}
