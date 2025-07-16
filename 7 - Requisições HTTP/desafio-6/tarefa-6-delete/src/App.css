@@ -1,12 +1,60 @@
-.quadrado{
-    background-color: black;
-    width: 80%;
-    border-radius: 5px;
-    margin: 10px auto;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Tenorite";
 }
-.quadrado > p{
+.App{
+    width: 50%;
+    margin: auto;
+    background-color: azure;
+}
+h1, h2{
     text-align: center;
-    font-family: "Poppins";
-    color: white;
-    font-size: 2em;
+    padding: 10px;
 }
+form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+.form-group input{
+    margin: 10px;
+    padding: 5px;
+    width: 250px;
+    
+}
+.form-container button{
+    width: 50%;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.form-container button:hover{
+    cursor: pointer;
+    background-color: rgb(207, 255, 207);
+    border-radius: 3px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+td, th{
+    border: 1px solid;
+    padding: 5px;
+}
+
+td button{
+    padding: 3px;
+}
+
+td button:hover{
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
+
