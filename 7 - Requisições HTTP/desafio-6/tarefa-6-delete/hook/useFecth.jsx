@@ -47,47 +47,75 @@ export const useFetch = (url) => {
       if (!response.ok) {
         // estou negando, então se relmente for false (o if se torna true) e executa o código
         throw new Error(`Erro HTTP: ${response.status}`);
-        // throw new Error é usado dentro de try para tratar erros esperados pelo sistema e interrompe o código aqui mesmo
+        // throw new Error é usado dentro de try para tratar erros esperados pelo sistema e interromper o código aqui mesmo
         // quando o erro ainda não é esperado não é uma boa prática utilizar throw new Error
       }
 
-      // Força a atualização dos dados após a requisição
       setTrigger((prev) => !prev);
+      // Força a atualização dos dados após a requisição
+      // Um gatilho que atera o seu statu apenas para que o hook a seguir seja obrigado a renderizar novamente
 
-      // Retorna o JSON apenas se houver conteúdo
       return response.status !== 204 ? await response.json() : null;
+      // Retorna o JSON apenas se houver conteúdo
+      // verififica o status de response
+      // se for diferente de 204 (no content) retorna um objeto json
+      // se for 204 ele automaticamente retorna null
     } catch (error) {
+      // parte do try que caputra o erro, porém inesperado
       setErro(error.message);
+      // muda status para armazenar a mensagem do erro pego em catch
       throw error;
+      // finaliza o código lançando o erro de volta
     } finally {
+      // parte final da estrutura try
+      // SEMPRE executa, mesmo que throw new Error interrompa o código
+      // é uma boa pratica inseirir, já que executa o encerramento do estado de carregamento
       setCarregando(false);
+      // altera o estado de carregamento
     }
   };
 
   // Efeito para buscar os dados
   useEffect(() => {
     const fetchData = async () => {
+      // função assincrona para fazer a solicitação dos dados
       setCarregando(true);
+      // mesmo que acima o carregamento terminou, ali era apenas o "envio das configurações"
       setErro(null);
+      // limpamos o estado de erro para realizar uma nova etapa do código e verificar se há erros nessa parte
 
       try {
+        // tente
         const response = await fetch(url);
-
+        // reponse vai aguardar (await) a busca (fecth) da base (url)
         if (!response.ok) {
+          // estado de false, se for false executa a proxima linha
+          // se reponse.ok for true o código contia a proxima etapa
           throw new Error(`Erro HTTP: ${response.status}`);
+          // interrompe o fluxo do códgio e exibe a mensagem dde erro
         }
 
         const json = await response.json();
+        // cria o objeto json
+        // espera (await) a resposta (response) ser tranformada em um objeto json (.json())
         setDados(json);
+        // altera o estado de dados com o novo objeto json
       } catch (error) {
         setErro(error.message);
+        // se der algum erro inesperado, faz a captura do erro e emite ele na tela
       } finally {
         setCarregando(false);
+        // mesmo que de erro finaliza, e altra o estado de carregamento
       }
     };
 
     fetchData();
-  }, [url, trigger]); // Adiciona trigger como dependência
-
+    // reiniciamos nosso código
+    // basicamente o código é "carregado", mas precisamos chamar ele fora de sua estrutura para executar
+  }, [url, trigger]);
+  // aqui estao as dependencias:
+  // url - se ela mudar o useEffect é executado novamente
+  // trigger -  sempre vai ser alterado (pela função) httpConfig forçando o useEffect ser executado novamente
   return { dados, httpConfig, carregando, erro };
+  // aqui estamos "exportando" para que possamos acessar em app.jsx
 };
