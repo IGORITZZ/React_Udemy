@@ -1,0 +1,36 @@
+INICIAR PROJETO
+
+1. comandos no terminal
+
+    npm create vite@latest nome-do-projeto
+        cd nome-do-projeto
+        npm install (instala dependencias do React)
+        npm run dev (incializa o projeto)
+
+2. configuração vite.config.js
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    open: true
+  }
+})
+
+essa configuração abre o projeto automaticamente após o comando npm run dev
+
+3. configuração package.json para acionar o json server
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "server": "json-server --watch data/db.json" essa lina é a linha que vai procurar o nosso "servidor"
+  },
+
+  por conta da versão json 1.0.0-beta-3 não é necessário o comando --watch ou -w
+  agora o json-server está observando a pasta sem necessidade de declarar isso nas configurações
+
+
+4. estrutura JSON
+{"nome": [{"id": "1", "name": "José"},{""id": "2", "name": "Maria""}]}

@@ -1,0 +1,29 @@
+102 - Introdução a Seção
+
+Router nada mais é do que adicionar paginação em nossa aplicação
+É um pacote externo que não está de fato em React, mas que mesmo assim é poderosa demais
+
+------------------------------------------------------------------------------------------
+103 - O que é React Router?
+O React Router é um dos pacotes mais utilizados para criar uma estrutura de rotas em aplicações React
+    * ele não está presente no React, é uma dependecia que precisamos instalar no React com o NPM install
+Permite que SPAs tenham multiplas páginas
+Precisamos instalar no nosso projeto
+A configuração e utilização é simples
+    * é trabalhosa a configuração, mas uma vez que uma rota é definida não é necessário mais nada
+Também temos outras funções como:
+    * Redirect
+    * Nested Routes
+    * Not Found Routes
+------------------------------------------------------------------------------------------
+104 - Problemas com a versão atual de JSON Server
+Pessoal, ao instalarem o Json Server, utilizem o seguinte comando:
+    npm install json-server@0.17.0
+A versão atual está apresentando falhas, mas com a versão 0.17.0, poderão seguir com o curso sem problemas.
+Para aqueles que  já instalaram o pacote na versão mais recente, executem esse comando:
+    npm uninstall json-server
+Em seguida, excluam a pasta node_modules, e executem o comando:
+    npm install
+Por fim, executem o comando de instalação do pacote corrigido:
+    npm install json-server@0.17.0
+------------------------------------------------------------------------------------------

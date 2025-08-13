@@ -1,0 +1,19 @@
+{
+    "produtos": [
+        {
+            "id": 1,
+            "nome": "TENIS",
+            "valor": 128.55
+        },
+                {
+            "id": 2,
+            "nome": "SAPATO",
+            "valor" : 55.89
+        },
+                {
+            "id": 3,
+            "nome": "CHINELO",
+            "valor": 45.80
+        }
+    ]
+}

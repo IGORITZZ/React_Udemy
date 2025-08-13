@@ -1,0 +1,8 @@
+✅1. Crie um novo projeto para esta unidade 
+    * o nome pode ser qualquer
+✅2. Instale o modulo do React Router neste projeto, que é o: react-router-dom
+    * apenas colocar o npm install na frente
+✅3. Instale também o json-server
+✅4. Coloque pelo menos três produtos no seu arquivo de db.json
+    * como no ultimo projeto
+✅5. Crie um scrpit para inicalizar o json-server

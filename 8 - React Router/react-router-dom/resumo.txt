@@ -1,0 +1,22 @@
+                    CONFIGURANDO REACT ROUTER
+Para configurar o React Router vamos ter que importar três elementos de react-router-dom.
+Da mesma forma que importamos useEffect e outros "uses", o mesmo conceito aplicamos no react-router, veja alguns abaixo:
+
+1. BrouserRouter: define onde a área do nosso app que vai trocar as paginas;
+    um local aonde fica a troca de páginas.
+2. Routes: define as rotas;
+    um grupo de rotas
+3. Route: um elemento deste para cada rota, configurar com "path" e componente da rota.
+    o componente que represeta a rota
+
+-----------------------------------------------------------------------------------------
+                    ADICIONANDO LINKS
+O metodo que usamos anteriormente, uma "linkagem" manual é bem menos intuitiva,e da muito mais trabalho para criar/manter. Por
+isso vamos utilizar links para fazer essa ligação entre as páginas e fazer um "menu" de navegação.
+
+1. Para criar links para as páginas vamos precisar utilizar Link do React Router
+2. No Link congiguramos o parâmetro to, que recebe a URL/path que será redirecionado quem clicar no link
+3. Vamos criar um Navbar para isso
+
+-----------------------------------------------------------------------------------------
+                CARREGAMENTO DE DADOS
