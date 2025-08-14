@@ -10,16 +10,18 @@ import Sobre from "./pages/Sobre";
 //2 importando o novo elemento de menu, ou NavBar
 import NavBar from "./components/NavBar";
 
-const url = "http://localhost:3000/produtos";
-const {data: itens, httpConfig, loading, erro } = useFetch(url)
 
 function App() {
+
+  const url = "http://localhost:3000/produtos";
+  const { data: itens, httpConfig, loading, erro } = useFetch(url);
+
   return (
     <div>
       <h1>React Router</h1>
       <BrowserRouter>
         {/* Camada mais alta do React Router */}
-        <NavBar/>
+        <NavBar />
         {/* como um elemento de Router, é necessário que esteja dentro da "árvore de links" */}
         <Routes>
           {/* Camada que envolve varias rotas */}
