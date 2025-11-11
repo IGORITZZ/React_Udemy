@@ -15,6 +15,8 @@ const Home = () => {
             <li key={item.id}>
               <h2>{item.nome}</h2>
               <p>R$: {item.valor.toFixed(2)}</p>
+              {/* 4 - Rota Dminamica */}
+              <Link to={`/produtos/${item.id}`}>Detalhes</Link>
             </li>
           ))}
       </ul>
