@@ -7,7 +7,7 @@ const Home = () => {
     const { data: itens, httpConfig, loading, erro } = useFetch(url); 
   return (
     <div className='Home'>
-      <div>Produtos</div>
+      <div><h1>Produtos</h1></div>
       {erro && <p>{erro}</p>}
       <ul className="produtos">
         {itens &&
