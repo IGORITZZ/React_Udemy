@@ -6,8 +6,8 @@ Router nada mais é do que adicionar paginação em nossa aplicação
 ------------------------------------------------------------------------------------------
 103 - O que é React Router?
 O React Router é um dos pacotes mais utilizados para criar uma estrutura de rotas em aplicações React
-    * ele não está presente no React, é uma dependecia que precisamos instalar no React com o NPM install
-Permite que SPAs tenham multiplas páginas
+    * ele não está presente no React, é uma dependência que precisamos instalar no React com o NPM install
+Permite que SPAs tenham múltiplas páginas
 Precisamos instalar no nosso projeto
 A configuração e utilização é simples
     * é trabalhosa a configuração, mas uma vez que uma rota é definida não é necessário mais nada
@@ -27,3 +27,28 @@ Em seguida, excluam a pasta node_modules, e executem o comando:
 Por fim, executem o comando de instalação do pacote corrigido:
     npm install json-server@0.17.0
 ------------------------------------------------------------------------------------------
+
+108 - Rotas Dinâmicas
+* para criar uma rota dinâmica é preciso definir uma nora Route, processo que já fazemos para rotas comuns
+* o padrão é /produtos/:id
+	aonde :id é o dado dinâmico
+* na pagina podemos utilizar o hook useParams para resgatar a informação
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
