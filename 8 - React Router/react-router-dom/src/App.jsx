@@ -10,6 +10,7 @@ import Sobre from "./pages/Sobre";
 //2 importando o novo elemento de menu, ou NavBar
 import NavBar from "./components/NavBar";
 import Produto from "./pages/Produto";
+import Info from "./pages/Info";
 
 function App() {
 
@@ -33,6 +34,8 @@ function App() {
                 Conforme no exemplo acima "/sobre" */}
           {/* 4 - Rota dinamica */}
           <Route path="/produtos/:id" element={<Produto />} /> 
+          {/* 6 - Nested Routes */}
+          <Route path="/produto/:id/info" element={<Info />} />
         </Routes>
       </BrowserRouter>
     </div>
