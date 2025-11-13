@@ -1,10 +1,14 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import "./Info.css"
+
 
 const Info = () => {
-
-    const {id} = useParams()
+  const {id} = useParams()
   return (
-    <div>Mais Informações sobre o Produdo: {id}</div>
+    <di>
+      <div>Mais Informações sobre o Produdo: {id}</div>
+      <Link className="info" to="/">Voltar</Link>
+    </di>
   )
 }
 
