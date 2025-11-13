@@ -1,13 +1,15 @@
 nav a{
-    margin: 0 10px;
-    padding: 5px;
+    margin: auto 10px;
+    padding: 5px 10px;
     
     justify-content: center;
     text-decoration: none;
     color: black;
 
     &:hover{
-        color: red;
+        color: white;
+        background: linear-gradient(70deg, #00008B, #0000A0, #0000C8);
+        border-radius: 50px;
     }
 }
 
