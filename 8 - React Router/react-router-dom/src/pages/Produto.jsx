@@ -1,4 +1,5 @@
-import { Link, useParams, useFetch } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useFetch } from "../hooks/useFetch";
 import './Produtos.css'
 
 const Produto = () => {
