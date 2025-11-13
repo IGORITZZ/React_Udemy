@@ -1,26 +1,31 @@
-.Home{
-    display: inline-block;
-    width: 400px;
-    align-items: center;
-    justify-content: center;
+.lista {
+  margin: auto;
 }
-.produtos {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.lista ul {
+  list-style-type: none;
 }
-.produtos li {
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-  list-style: none;
-  margin-bottom: 10px;
-  width: 100%;
 
-  &:hover{
-    background-color: red;
-    color: white;
-    cursor: pointer;
-  }
+.lista li {
+  display: inline-block; /* faz o elemnto li ficar lado a lado */
+  width: 200px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+}
+.estilo-link{
+  text-decoration: none;
+  color: darkblue;
+  border: 1px solid darkblue;
+  padding: 5px 50px;
+  border-radius: 50px;
+
+    &:hover{
+      color: white;
+      background: linear-gradient(70deg, #00008B, #0000A0, #0000C8);
+    }
+
+
 }
