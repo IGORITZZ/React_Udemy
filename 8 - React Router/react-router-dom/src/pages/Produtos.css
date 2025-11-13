@@ -1,0 +1,24 @@
+.detalhes-produto {
+  margin: auto;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.esilo-link-detalhes {
+  display: flex;
+  text-decoration: none;
+  color: darkblue;
+  border: 1px solid darkblue;
+  padding: 5px 50px;
+  border-radius: 50px;
+  margin: 5px auto;
+  text-align: center;
+  justify-content: center;
+  width: 150px;
+
+  &:hover {
+    color: white;
+    background: linear-gradient(70deg, #00008b, #0000a0, #0000c8);
+  }
+}
