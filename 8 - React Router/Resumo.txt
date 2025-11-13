@@ -3,55 +3,106 @@
 Router nada mais é do que adicionar paginação em nossa aplicação
 É um pacote externo que não está de fato em React, mas que mesmo assim é poderosa demais
 
-------------------------------------------------------------------------------------------
+---
 103 - O que é React Router?
 O React Router é um dos pacotes mais utilizados para criar uma estrutura de rotas em aplicações React
-    * ele não está presente no React, é uma dependência que precisamos instalar no React com o NPM install
+    * ele não está presente no React, é uma dependência que precisamos instalar no React com o NPM install
 Permite que SPAs tenham múltiplas páginas
 Precisamos instalar no nosso projeto
 A configuração e utilização é simples
-    * é trabalhosa a configuração, mas uma vez que uma rota é definida não é necessário mais nada
+    * é trabalhosa a configuração, mas uma vez que uma rota é definida não é necessário mais nada
 Também temos outras funções como:
-    * Redirect
-    * Nested Routes
-    * Not Found Routes
-------------------------------------------------------------------------------------------
+    * Redirect
+    * Nested Routes
+    * Not Found Routes
+---
 104 - Problemas com a versão atual de JSON Server
 Pessoal, ao instalarem o Json Server, utilizem o seguinte comando:
-    npm install json-server@0.17.0
+    npm install json-server@0.17.0
 A versão atual está apresentando falhas, mas com a versão 0.17.0, poderão seguir com o curso sem problemas.
 Para aqueles que  já instalaram o pacote na versão mais recente, executem esse comando:
-    npm uninstall json-server
+    npm uninstall json-server
 Em seguida, excluam a pasta node_modules, e executem o comando:
-    npm install
+    npm install
 Por fim, executem o comando de instalação do pacote corrigido:
-    npm install json-server@0.17.0
-------------------------------------------------------------------------------------------
+    npm install json-server@0.17.0
+---
 
 108 - Rotas Dinâmicas
 * para criar uma rota dinâmica é preciso definir uma nora Route, processo que já fazemos para rotas comuns
 * o padrão é /produtos/:id
-	aonde :id é o dado dinâmico
+ 	aonde :id é o dado dinâmico
 * na pagina podemos utilizar o hook useParams para resgatar a informação
-	então criamos uma variável que retira o id e podemos criar uma nova url dinamicamente
 
-const { id } = useParams();
-desfragmentamos o objeto inteiro chamando dele de id apenas
-<Link className="esilo-link-detalhes" to={`/produto/${produto.id}/info`}>Mais Informações</Link>
-						criamos o link de forma dinâmica
-				
+esse método serve para carregarmos itens de forma individual, com um botão de "detalhes" por exemplo
 
 
+---
+
+109 - Carregamento Dinâmico de Dados
+* graças a ultima aula o carregamento desse produto se torna mais fácil
+* podemos utilizar o useFetch para carregar o item
+* e por fim vamos fazer a validação e impressão desse item em tela
+
+Na prática:
+
+ 		  // 5 -  Carregamento de dado individual
+ 			const url = 'http://localhost:3000/produtos/' + id;
+ 				variável que armazena o endereço da base dedado, recebendo a concatenação com o id
+ 			const {data: produto, loading, error} = useFetch(url)
+ 				passamos dada e desfragmentamos em produto, loading e error, usando o hoock para fazer 				a busca na url
+
+ 			{error && <p>Houve um erro no carregamento...</p>}
+ 				mensagem de erro, caso houver
+ 				{loading && <p>Carregando produto...</p>}
+ 				mensagem de carregamento
+ 			{produto && (
+      				*<div>*
+
+       			*<h1>{produto.nome}</h1>*
+
+        		*<p>R$ {produto.valor}</p>*
+
+				*</div>)}*
+
+ 			informações sobre o produto
 
 
+---
 
+110 - Nested Routes
+as nested routes indicam url's mais complexas, como:
+ 	/produtos/:id/algumacoisa
+vamos precisar criar um componente que corresponda com o padrão indicado e também a url em App.jsx
+na nested routes teremos acesso ao parâmetro da url
+ 	isso quer dizer que o parâmetro :id é sempre mostrado quando carregarmos o /algumcoisa
+em Produto.jsx:
+        <div>
+          <h1>{produto.nome}</h1>
+          <p>R$ {produto.valor}</p>
+          <Link to="/">Voltar</Link>
+          {/* um link que volta para a página inicial, o simbolo "/" inidica pagina inical */}
+          {/* 6 - Nested Routes */}
+          <Link to={`/produto/${produto.id}/info`}>Mais Informações</Link>
+          {/*
+              como estamos uma uma pagina dinâmica de produto, podemos indicar a url com produdo.id
+              para acessar a rota info que criamos no App.jsx
+          */}
 
+em App.jsx:
+ 	import Info from "./pages/Info";
+ 	{/* 6 - Nested Routes */}
+ 	<Route path="/produto/:id/info" element={<Info />} />
 
+em Info.jsx
+import { useParams } from "react-router-dom"
 
+const Info = () => {
 
+    const {id} = useParams()
+  return (
+    <div>Mais Informações sobre o Produdo: {id}</div>
+  )
+}
 
-
-
-
-
-
+ 
