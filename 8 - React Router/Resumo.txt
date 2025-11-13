@@ -57,13 +57,13 @@ Na prática:
  				{loading && <p>Carregando produto...</p>}
  				mensagem de carregamento
  			{produto && (
-      				*<div>*
+      				*<div>*
 
-       			*<h1>{produto.nome}</h1>*
+       			*<h1>{produto.nome}</h1>*
 
-        		*<p>R$ {produto.valor}</p>*
+        		*<p>R$ {produto.valor}</p>*
 
-				*</div>)}*
+ 				*</div>)}*
 
  			informações sobre o produto
 
@@ -104,5 +104,60 @@ const Info = () => {
     <div>Mais Informações sobre o Produdo: {id}</div>
   )
 }
+
+
+
+---
+
+111 - Página 404
+* podemos criar uma página 404 com React Router
+* basta criamos o componente da página
+* e no arquivo de App.jsx definir o path como "*"
+* desta maneira qualquer rota que não exista cairá neste componentes
+
+Em App.jsx
+<Route path="*" element={<NotFound />} />
+
+Em NotFound.jsx
+
+const NotFound = () => {
+  return (
+
+    <div>
+        <h1>PÁGINA NÃO ENCONTRADA</h1>
+        <p>ERRO 404 (Not Found)</p>
+    </div>
+  )
+}
+
+export default NotFound
+
+
+
+O conceito desse componente é bem simples, toda infoamação inserira após a / do link do site, se não houver uma rota existente irá carregar esse componente. Exemplo:
+o link http://localhost:5173/produtos/1 exite
+o linke http://localhost:5173/minhaconta não exites
+
+logo o link irá carregar o componente que informa o erro
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
