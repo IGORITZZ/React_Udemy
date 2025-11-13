@@ -1,4 +1,35 @@
-                    CONFIGURANDO REACT ROUTER
+102 - Introdução a Seção
+
+Router nada mais é do que adicionar paginação em nossa aplicação
+É um pacote externo que não está de fato em React, mas que mesmo assim é poderosa demais
+
+-----------------------------------------------------------------------------------------
+103 - O que é React Router?
+O React Router é um dos pacotes mais utilizados para criar uma estrutura de rotas em aplicações React
+    * ele não está presente no React, é uma dependência que precisamos instalar no React com o NPM install
+Permite que SPAs tenham múltiplas páginas
+Precisamos instalar no nosso projeto
+A configuração e utilização é simples
+    * é trabalhosa a configuração, mas uma vez que uma rota é definida não é necessário mais nada
+Também temos outras funções como:
+    * Redirect
+    * Nested Routes
+    * Not Found Routes
+
+-----------------------------------------------------------------------------------------
+104 - Problemas com a versão atual de JSON Server
+Pessoal, ao instalarem o Json Server, utilizem o seguinte comando:
+    npm install json-server@0.17.0
+A versão atual está apresentando falhas, mas com a versão 0.17.0, poderão seguir com o curso sem problemas.
+Para aqueles que  já instalaram o pacote na versão mais recente, executem esse comando:
+    npm uninstall json-server
+Em seguida, excluam a pasta node_modules, e executem o comando:
+    npm install
+Por fim, executem o comando de instalação do pacote corrigido:
+    npm install json-server@0.17.0
+
+-----------------------------------------------------------------------------------------
+105 - CONFIGURANDO REACT ROUTER
 Para configurar o React Router vamos ter que importar três elementos de react-router-dom.
 Da mesma forma que importamos useEffect e outros "uses", o mesmo conceito aplicamos no react-router, veja alguns abaixo:
 
@@ -10,7 +41,7 @@ Da mesma forma que importamos useEffect e outros "uses", o mesmo conceito aplica
     o componente que represeta a rota
 
 -----------------------------------------------------------------------------------------
-                    ADICIONANDO LINKS
+106 - ADICIONANDO LINKS
 O metodo que usamos anteriormente, uma "linkagem" manual é bem menos intuitiva,e da muito mais trabalho para criar/manter. Por
 isso vamos utilizar links para fazer essa ligação entre as páginas e fazer um "menu" de navegação.
 
@@ -19,4 +50,151 @@ isso vamos utilizar links para fazer essa ligação entre as páginas e fazer um
 3. Vamos criar um Navbar para isso
 
 -----------------------------------------------------------------------------------------
-                CARREGAMENTO DE DADOS
+107 - CARREGAMENTO DE DADOS
+* Vamos exercitar novamente o carregamento de dados com nosso hook useFetch
+* Depois poderemos utilizá-los para o carregamento de dados individuais
+* Utilizaremos o hook igual ao da ultima seção e vamos imprir os produtos na Home da mesma forma
+
+-----------------------------------------------------------------------------------------
+108 - Rotas Dinâmicas
+* para criar uma rota dinâmica é preciso definir uma nora Route, processo que já fazemos para rotas comuns
+* o padrão é /produtos/:id
+ 	aonde :id é o dado dinâmico
+* na pagina podemos utilizar o hook useParams para resgatar a informação
+
+esse método serve para carregarmos itens de forma individual, com um botão de "detalhes" por exemplo
+
+-----------------------------------------------------------------------------------------
+109 - Carregamento Dinâmico de Dados
+* graças a ultima aula o carregamento desse produto se torna mais fácil
+* podemos utilizar o useFetch para carregar o item
+* e por fim vamos fazer a validação e impressão desse item em tela
+
+Na prática:
+
+ 		  // 5 -  Carregamento de dado individual
+ 			const url = 'http://localhost:3000/produtos/' + id;
+ 				variável que armazena o endereço da base dedado, recebendo a concatenação com o id
+ 			const {data: produto, loading, error} = useFetch(url)
+ 				passamos dada e desfragmentamos em produto, loading e error, usando o hoock para fazer 				a busca na url
+
+ 			{error && <p>Houve um erro no carregamento...</p>}
+ 				mensagem de erro, caso houver
+ 				{loading && <p>Carregando produto...</p>}
+ 				mensagem de carregamento
+ 			{produto && (
+      				*<div>*
+
+       			*<h1>{produto.nome}</h1>*
+
+        		*<p>R$ {produto.valor}</p>*
+
+ 				*</div>)}*
+
+ 			informações sobre o produto
+
+-----------------------------------------------------------------------------------------
+110 - Nested Routes
+as nested routes indicam url's mais complexas, como:
+ 	/produtos/:id/algumacoisa
+vamos precisar criar um componente que corresponda com o padrão indicado e também a url em App.jsx
+na nested routes teremos acesso ao parâmetro da url
+ 	isso quer dizer que o parâmetro :id é sempre mostrado quando carregarmos o /algumcoisa
+em Produto.jsx:
+        <div>
+          <h1>{produto.nome}</h1>
+          <p>R$ {produto.valor}</p>
+          <Link to="/">Voltar</Link>
+          {/* um link que volta para a página inicial, o simbolo "/" inidica pagina inical */}
+          {/* 6 - Nested Routes */}
+          <Link to={`/produto/${produto.id}/info`}>Mais Informações</Link>
+          {/*
+              como estamos uma uma pagina dinâmica de produto, podemos indicar a url com produdo.id
+              para acessar a rota info que criamos no App.jsx
+          */}
+
+em App.jsx:
+ 	import Info from "./pages/Info";
+ 	{/* 6 - Nested Routes */}
+ 	<Route path="/produto/:id/info" element={<Info />} />
+
+em Info.jsx
+import { useParams } from "react-router-dom"
+
+const Info = () => {
+
+    const {id} = useParams()
+  return (
+    <div>Mais Informações sobre o Produdo: {id}</div>
+  )
+}
+
+-----------------------------------------------------------------------------------------
+111 - Página 404
+* podemos criar uma página 404 com React Router
+* basta criamos o componente da página
+* e no arquivo de App.jsx definir o path como "*"
+* desta maneira qualquer rota que não exista cairá neste componentes
+
+Em App.jsx
+<Route path="*" element={<NotFound />} />
+
+Em NotFound.jsx
+
+const NotFound = () => {
+  return (
+
+    <div>
+        <h1>PÁGINA NÃO ENCONTRADA</h1>
+        <p>ERRO 404 (Not Found)</p>
+    </div>
+  )
+}
+
+export default NotFound
+
+
+O conceito desse componente é bem simples, toda infoamação inserira após a / do link do site, se não houver uma rota existente irá carregar esse componente. Exemplo:
+o link http://localhost:5173/produtos/1 exite
+o linke http://localhost:5173/minhaconta não exites
+
+logo o link irá carregar o componente que informa o erro
+
+-----------------------------------------------------------------------------------------
+112 - Link ATIVO
+* Para ter fácil acesso a uma modificação para os links ativos vamos trocar o Link pelo NavLink
+    a tag muda de <Link> para <NavLink>
+* Neste elemento tenos acesso a um valor chamado isActive
+    esse valor é acessado por meio de função, em casos especificos utilizarios ela
+    de forma automática o NavLink imprime a className="active" ao clicar em um link
+    a validação com isActive funcinaria de maneira que impririamos a classe ativo e não ativo nos elemento em tela, e assim poderiamos ter configurações CSS rodando de forma atuomaticamente entre dois elementos
+    porém ficar colocando essa validaão em todos os NavLink deixaria o código feio, e por isso usamos em casos especificos
+    um exemplo de validação, seria a seguinte:
+        <NavLink to="/sobre" className={({isActive}) => (isActive ? "esta-ativo" : "nao-ativo")}>Sobre</NavLink>
+* Podemos ativar uma classe se a rota atual for a que está no atributo to
+    O isActive faz a validação, se a tela que eu estou for a mesma que o to está, ele aplica a configuração no elemento
+Na pratica ficaria assim:
+Em Navbar.jsx:
+    import { NavLink } from 'react-router-dom'
+        importamos o NavLink para a pagina
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/sobre">Sobre</NavLink>
+    e como podemos ver, o seu comportamento é muito parecido com o Link
+
+Em Navbar.css
+.active {
+  margin: auto 10px;
+  padding: 5px 10px;
+
+  justify-content: center;
+  text-decoration: none;
+
+  color: white;
+  background: linear-gradient(70deg, #00008b, #0000a0, #0000c8);
+}
+    O elemento .active recebe essa configuração quando selecionado
+
+
+
+
+
