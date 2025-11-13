@@ -1,5 +1,4 @@
-import { Link, useParams } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
+import { Link, useParams, useFetch } from "react-router-dom";
 import './Produtos.css'
 
 const Produto = () => {
@@ -23,12 +22,7 @@ const Produto = () => {
           </Link>
           {/* um link que volta para a página inicial, o simbolo "/" inidica pagina inical */}
           {/* 6 - Nested Routes */}
-          <Link
-            className="esilo-link-detalhes"
-            to={`/produto/${produto.id}/info`}
-          >
-            Mais Informações
-          </Link>
+          <Link className="esilo-link-detalhes" to={`/produto/${produto.id}/info`}>Mais Informações</Link>
           {/* 
               como estamos uma uma pagina dinamica de produto, podemos indicar a url com produdo.id
               para acessar a rota info que criamos no App.jsx

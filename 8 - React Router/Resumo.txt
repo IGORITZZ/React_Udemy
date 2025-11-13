@@ -33,10 +33,13 @@ Por fim, executem o comando de instalação do pacote corrigido:
 * o padrão é /produtos/:id
 	aonde :id é o dado dinâmico
 * na pagina podemos utilizar o hook useParams para resgatar a informação
+	então criamos uma variável que retira o id e podemos criar uma nova url dinamicamente
 
-
-
-
+const { id } = useParams();
+desfragmentamos o objeto inteiro chamando dele de id apenas
+<Link className="esilo-link-detalhes" to={`/produto/${produto.id}/info`}>Mais Informações</Link>
+						criamos o link de forma dinâmica
+				
 
 
 
