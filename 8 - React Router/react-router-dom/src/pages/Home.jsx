@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 const Home = () => {
 
     const url = "http://localhost:3000/produtos";
-    const { data: itens, httpConfig, loading, erro } = useFetch(url); 
+    const { data: itens, loading, erro } = useFetch(url); 
   return (
     <div className="Home">
       <div>
         <h1>Produtos</h1>
       </div>
+      {loading && <p>Carregando...</p>}
       {erro && <p>{erro}</p>}
       <div className="lista">
         <ul className="produtos">

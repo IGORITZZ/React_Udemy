@@ -194,6 +194,46 @@ Em Navbar.css
 }
     O elemento .active recebe essa configuração quando selecionado
 
+-----------------------------------------------------------------------------------------
+113 - Search Params
+* Search Params é um recurso que permite obter o que vem da URL em forma de parametro, ex: produtos/q=camisa
+* utilizamos o hook useSerachParams para obtê-los
+    basicamente ele faz a leitura de URL daquilo que for posto após um simbolo de interrogação "?"
+* Como este recurso fica simples fazer uma funcionalidade de busca no sistema
+
+1. Para inciarmos vamos começar criar um componente, ou seja, um intem na nossa página que permanecerá visivel em todas as paginas
+SerchForms.jsx já que será um campo de formulário para realizarmos as pesquisas em nossa página
+
+não podemos esquecer de adcionar em App.jsx, como abaixo:
+<BrowserRouter>
+        <NavBar />
+        <SearchForm /> <- esse é o nosso item de pesquisa
+        <Routes>
+
+2. Em seguida vamos configurar nossa barra de pesquisa, e nela vamos adcionar um hook que é essecial para o funcionamento, o useNavigate
+Ele server para alterear o parametro da URL e ajudar o nosso hook de busca a achar o item
+Em SearchForm.jsx:
+import { useNavigate } from "react-router-dom" -> importamos o novo hook
+
+const SearchForm = () => {
+        const navigate = useNavigate() -> padrão para que o hook seja "iniciado"
+        const [query, setQuery] = useState("") -> query vem de "busca", vamos usar esse padrão para alterar a nossa URL
+        const handleSubmit = (e) => { -> evento de envio, utilizando o padrão e para evento
+            e.preventDefault()  -> já vimos antes, preventDefault serve para que a página não se reinicie por completo
+            navigate("/search?q=" + query) -> navigate informa a url search mais aquilo que foi digiitado e enviado pelo usuario 
+        }
+  return (
+    <div>
+        <form onSubmit={handleSubmit}>
+            <input type="text" onChange={(e) => setQuery(e.target.value)}/> -> formulario com envio de valor para o setQuery
+            <input type="submit" value="Buscar"/>
+        </form>
+    </div>
+  )
+}
+
+
+
 
 
 
