@@ -212,6 +212,7 @@ não podemos esquecer de adcionar em App.jsx, como abaixo:
 
 2. Em seguida vamos configurar nossa barra de pesquisa, e nela vamos adcionar um hook que é essecial para o funcionamento, o useNavigate
 Ele server para alterear o parametro da URL e ajudar o nosso hook de busca a achar o item
+
 Em SearchForm.jsx:
 import { useNavigate } from "react-router-dom" -> importamos o novo hook
 
@@ -220,7 +221,7 @@ const SearchForm = () => {
         const [query, setQuery] = useState("") -> query vem de "busca", vamos usar esse padrão para alterar a nossa URL
         const handleSubmit = (e) => { -> evento de envio, utilizando o padrão e para evento
             e.preventDefault()  -> já vimos antes, preventDefault serve para que a página não se reinicie por completo
-            navigate("/search?q=" + query) -> navigate informa a url search mais aquilo que foi digiitado e enviado pelo usuario 
+            navigate("/search?q=" + query) -> nanavigate redireciona para uma página chamanda /search e adiciona a url aquilo que o usuário digitou no campo de busca 
         }
   return (
     <div>
@@ -231,6 +232,16 @@ const SearchForm = () => {
     </div>
   )
 }
+
+Em Search.jsx:
+import { useSearchParams, Link } from "react-router-dom"; -> importando os hooks que vamos utilizar nesse trecho
+import { useFetch } from "../hooks/useFetch"; -> para fazer consulta na API
+
+const Serch = () => {
+  const [searchParams] = useSearchParams() 
+  const url = "http://localhost:3000/produtos?" + searchParams
+
+  const { data: itens, loading, erro } = useFetch(url);
 
 
 
