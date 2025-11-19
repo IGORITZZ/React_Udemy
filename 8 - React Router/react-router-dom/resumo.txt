@@ -268,10 +268,17 @@ const Serch = () => {
   );
 }
 
+-----------------------------------------------------------------------------------------
+114 - Redirecionamento de URL
+* Podemos precisar de um redirecioamento de páginas eventualmente
+* Exemplo: uma página antigda do sistema responde agora a uma nova URL
+* Para isso vamos criar uma rota com Route normalmente
+* Mas em element vamos utilizar o componente Navigate com to que vai para a rota correta
 
+<Route path="/sobre" element={<Sobre />} /> -> estrutura comum para uma rota
+<Route path="/company" element={<Navigate to="/sobre" />} /> -> estrutura para um Redirecionamento de rota
 
-
-
+Repare o uso do navigate, na aula passada vimos o uso dele em uma lógica para ir até uma URL após uma ação, aqui é mais simples para colocar ele e adicionar o to que ele irá redirecionar atuomaticamente até a URL desejada
 
 
 

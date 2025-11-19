@@ -1,7 +1,7 @@
 import "./App.css";
 // 1 - configuração react router
 //importando para o projeto
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // 1.2 - paginas
 //importando as paginas para o projeto
 import Home from "./pages/Home";
@@ -34,6 +34,8 @@ function App() {
           {/* assim como o simbolo "/" significa home ou pagina inicial, 
                 para configurar uma rota é preciso informar o nome da rota após a barra
                 Conforme no exemplo acima "/sobre" */}
+          {/* 10 - Redirecionamento de URL */}
+          <Route path="/company" element={<Navigate to="/sobre" />} />
           {/* 4 - Rota dinamica */}
           <Route path="/produtos/:id" element={<Produto />} />
           {/* 6 - Nested Routes */}
