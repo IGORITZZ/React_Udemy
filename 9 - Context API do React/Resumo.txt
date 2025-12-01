@@ -1,0 +1,8 @@
+117 - O que é Context API?
+* Um recurso que facilita o compartilhamento de um estado entre componentes
+* Ou seja, quando precisamod de dados "globais", provavelmente precisamos utiulizar o Context
+* O Context precisa encapsular os componentes que receberão seus valores, geralmente colocamos no App.jsx ou index.jsx
+* Os contextos geralmente ficam na pasta context
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+118 - 
