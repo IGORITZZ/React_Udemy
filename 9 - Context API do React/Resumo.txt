@@ -1,8 +1,16 @@
 117 - O que é Context API?
 * Um recurso que facilita o compartilhamento de um estado entre componentes
+    Ex: usamos o state em uma parte da aplicação, porém queremos acessar em outra parte esse mesmo state de forma prática.
 * Ou seja, quando precisamod de dados "globais", provavelmente precisamos utiulizar o Context
+    Transforma dados, como exemplificados assim, em dados globais, que podem ser acessados em qualquer local da aplicação
+    Ex: um usuário efetuou login, armazenamos o usuário para acessar o contexto e fazer liberações para ele dentro do sistema, o que ele pode ou não fazer
 * O Context precisa encapsular os componentes que receberão seus valores, geralmente colocamos no App.jsx ou index.jsx
+    Basicamente "abraça" os componentes
 * Os contextos geralmente ficam na pasta context
-
+    Assim como em outras aulas, o contexto tem que ficar armazenado em uma pasta, fazendo assim uma arquitetura limpa do código e mantando uma boa prática
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-118 - 
+TAREFA 8: Criação de projeto e inicialização de dependências
+1. Crie um novo projeto para trabalharmos com Context
+2. Este projeto deve ter instaldo o React Router
+3. Crie 3 páginas
+4. Faça uma navbar e coloque o link para as três
