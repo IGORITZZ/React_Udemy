@@ -8,9 +8,47 @@
     Basicamente "abraça" os componentes
 * Os contextos geralmente ficam na pasta context
     Assim como em outras aulas, o contexto tem que ficar armazenado em uma pasta, fazendo assim uma arquitetura limpa do código e mantando uma boa prática
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TAREFA 8: Criação de projeto e inicialização de dependências
 1. Crie um novo projeto para trabalharmos com Context
+    i. criar novo arquivo usando os comandos:
+        npm create vite@latest [nome-do-projeto] --> aqui criamos o projeto com os arquivos e configurações iniciais;
+        npm install --> instalamos em seguida as dependências externas do projeto.
+
 2. Este projeto deve ter instaldo o React Router
+    i. npm install react-router-dom --> essa dependência é necessária para garantir que o React Router funcione.
+
 3. Crie 3 páginas
+    i. criar uma pasta nomeda como "componentes" dentro de "src";
+    ii. criar um componente NavBar, será nossa barra de navegação entre as páginas. É denominado componente aqui que será usado em todas as páginas de forma "fixa";
+    iii. ainda dentro de "src" crie a pasta nomeada "pages";
+    iv. crie 3 arquivos que funcionarão como páginas.
+
 4. Faça uma navbar e coloque o link para as três
+    i. em App.jsx crie agora a "arvore" para os itens: 
+        BrowserRouter 
+        Routes
+        Route
+        Route
+        Routes
+        BrowserRouter
+    ii. o componente NavBar vai após BrowserRouter, ficando assim:
+        BrowserRouter
+        NavBar
+    iii. para adcionar as paginas, vamos em Route, assim:
+        route path='/sobre' element={<sobre/>}
+        path define o final da url, ou seja, se for pagina.com o path adciona o /sobre 
+        o element busca aquilo que estamos querendo mostrar, assim não renderizamos uma nova página, apenas o elemento
+    iv. a estrutura final ficaria assim:
+        <BrowserRouter> 
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path='/Sobre' element={<Sobre/>}/>
+          <Route path='/Contato' element={<Contato/>}/>
+        </Routes>
+        </BrowserRouter>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+118 - Criando o contexto
