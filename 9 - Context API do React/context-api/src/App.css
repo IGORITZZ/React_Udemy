@@ -1,0 +1,11 @@
+*{  
+    margin: 0;
+    padding: 0;
+}
+div{
+    text-align: center;
+}
+.react-router{
+    background-image: linear-gradient( 160deg, #0c1029, #09124c);
+    color: white;
+}

@@ -6,7 +6,7 @@ import { BrowserRouter, Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 
 //3. Importanto componentes e paginas
-import NavBar from './componentes/NavBar'
+import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Sobre from './pages/Sobre'
 import Contato from './pages/Contato'
@@ -15,15 +15,17 @@ function App() {
 
   return (
     <div>
-      <h1>Context API</h1>
-      <BrowserRouter> 
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path='/Sobre' element={<Sobre />}/>
-          <Route path='/Contato' element={<Contato />}/>
-        </Routes>
-      </BrowserRouter>
+      <div className="react-router">
+        <h1>Context API</h1>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path='/Sobre' element={<Sobre />}/>
+            <Route path='/Contato' element={<Contato />}/>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   )
 }
